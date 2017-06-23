@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+{% load staticfiles %}
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SSL 2.0</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="{% static 'LEARNSSL/reveal-js/css/reveal.css' %}">
+		<link rel="stylesheet" href="{% static 'LEARNSSL/reveal-js/css/theme/serif.css' %}" id="theme">
+		<style type="text/css" media="screen">
+			.slides section.has-dark-background,
+			.slides section.has-dark-background h2 {
+				color: #fff;
+			}
+			.slides section.has-light-background,
+			.slides section.has-light-background h2 {
+				color: #222;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+                <section>
+                    <h1>SSL 2.0</h1>
+                </section>
+
+				<section data-background="#808080">
+                    <section>
+                        <h2>Client Hello</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Packet Contents</th>
+                                    <th>Size (Bytes)</th>
+                                    <th>Raw Packet Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="#/1/1">MSG-CLIENT-HELLO</a></td>
+                                    <td>1</td>
+                                    <td>0x01</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/2">CLIENT-VERSION</a></td>
+                                    <td>2</td>
+                                    <td>0x0002</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/3">CIPHER-SPECS-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0009</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/4">SESSION-ID-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0000</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/5">CHALLENGE-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0010</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/5">CIPHER-SPECS-DATA</a></td>
+                                    <td>Min: 3<br>Max: 65535</td>
+                                    <td>0x010080<br>0x060040<br>0x0700C0</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/6">SESSION-ID-DATA</a></td>
+                                    <td>Max: 65535</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/7">CHALLENGE-DATA</a></td>
+                                    <td>Max: 65535</td>
+                                    <td>0x04F9420299AB49D98<br>7E20394389F9431</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>MSG-CLIENT-HELLO</h2>
+                        <p>info about client hello</p>
+                    </section>
+                    <section>
+                        <h2>CLIENT-VERSION</h2>
+                        <p>info about client version</p>
+                    </section>
+                    <section>
+                        <h2>CIPHER-SPECS-LENGTH</h2>
+                        <p>info about cipher specs length</p>
+                    </section>
+                    <section>
+                        <h2>SESSION-ID-LENGTH</h2>
+                        <p>info about session id length</p>
+                    </section>
+                    <section>
+                        <h2>CHALLENGE-LENGTH</h2>
+                        <p>info about challenge length</p>
+                    </section>
+                    <section>
+                        <h2>CIPHER-SPECS-DATA</h2>
+                        <p>info about cipher specs data</p>
+                    </section>
+                    <section>
+                        <h2>SESSION-ID-DATA</h2>
+                        <p>info about session id data</p>
+                    </section>
+                    <section>
+                        <h2>CHALLENGE-DATA</h2>
+                        <p>info about challenge data</p>
+                    </section>
+				</section>
+
+				<section data-background="#808080">
+					<h2>Next stage of handshake goes here!</h2>
+				</section>
+
+				<section data-background-color="lightblue">
+					<h2>data-background: lightblue</h2>
+				</section>
+
+				<section>
+					<section data-background="#ff0000">
+						<h2>data-background: #ff0000</h2>
+					</section>
+					<section data-background="rgba(0, 0, 0, 0.2)">
+						<h2>data-background: rgba(0, 0, 0, 0.2)</h2>
+					</section>
+					<section data-background="salmon">
+						<h2>data-background: salmon</h2>
+					</section>
+				</section>
+
+				<section data-background="rgba(0, 100, 100, 0.2)">
+					<section>
+						<h2>Background applied to stack</h2>
+					</section>
+					<section>
+						<h2>Background applied to stack</h2>
+					</section>
+					<section data-background="rgb(66, 66, 66)">
+						<h2>Background applied to slide inside of stack</h2>
+					</section>
+				</section>
+
+				<section data-background-transition="slide" data-background="{% static 'LEARNSSL/reveal-js/test/examples/assets/image1.png' %}">
+					<h2>Background image</h2>
+				</section>
+
+				<section>
+					<section data-background-transition="slide" data-background="{% static 'LEARNSSL/reveal-js/test/examples/assets/image1.png' %}">
+						<h2>Background image</h2>
+					</section>
+					<section data-background-transition="slide" data-background="{% static 'LEARNSSL/reveal-js/test/examples/assets/image1.png' %}">
+						<h2>Background image</h2>
+					</section>
+				</section>
+
+				<section data-background="{% static 'LEARNSSL/reveal-js/test/examples/assets/image2.png' %}" data-background-size="100px" data-background-repeat="repeat" data-background-color="#111">
+					<h2>Background image</h2>
+					<pre>data-background-size="100px" data-background-repeat="repeat" data-background-color="#111"</pre>
+				</section>
+
+				<section data-background="#888888">
+					<h2>Same background twice (1/2)</h2>
+				</section>
+				<section data-background="#888888">
+					<h2>Same background twice (2/2)</h2>
+				</section>
+
+				<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm">
+					<h2>Video background</h2>
+				</section>
+
+				<section data-background-iframe="https://slides.com/news/make-better-presentations/embed?style=hidden&autoSlide=4000">
+					<h2>Iframe background</h2>
+				</section>
+
+				<section>
+					<section data-background="#417203">
+						<h2>Same background twice vertical (1/2)</h2>
+					</section>
+					<section data-background="#417203">
+						<h2>Same background twice vertical (2/2)</h2>
+					</section>
+				</section>
+
+				<section data-background="#934f4d">
+					<h2>Same background from horizontal to vertical (1/3)</h2>
+				</section>
+				<section>
+					<section data-background="#934f4d">
+						<h2>Same background from horizontal to vertical (2/3)</h2>
+					</section>
+					<section data-background="#934f4d">
+						<h2>Same background from horizontal to vertical (3/3)</h2>
+					</section>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="{% static 'LEARNSSL/reveal-js/lib/js/head.min.js' %}"></script>
+		<script src="{% static 'LEARNSSL/reveal-js/js/reveal.js' %}"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				center: true,
+                history: true,
+				// rtl: true,
+
+				transition: 'linear',
+				// transitionSpeed: 'slow',
+				// backgroundTransition: 'slide'
+
+                width: 1920,
+                height: 1080,
+			});
+
+		</script>
+
+	</body>
+</html>
