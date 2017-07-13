@@ -25,7 +25,7 @@ SECRET_KEY = 'd()sf_x=twh1ng5co++50(4%vie7@5w4)3*2*3c1!&pwx=(*vy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ssltls.herokuapp.com']
 
 
 # Application definition
