@@ -1,1 +1,1 @@
-web: gunicorn fintech4.wsgi --log-file -
+web: gunicorn learnssl.wsgi --log-file -
