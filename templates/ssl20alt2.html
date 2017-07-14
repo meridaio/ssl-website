@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+{% load staticfiles %}
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SSL 2.0</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="{% static 'LEARNSSL/reveal-js/css/reveal.css' %}">
+		<link rel="stylesheet" href="{% static 'LEARNSSL/reveal-js/css/theme/blood.css' %}" id="theme">
+		<style type="text/css" media="screen">
+			.slides section.has-dark-background,
+			.slides section.has-dark-background h2 {
+				color: #fff;
+			}
+			.slides section.has-light-background,
+			.slides section.has-light-background h2 {
+				color: #222;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+                <section>
+                    <h1>SSL 2.0</h1>
+                    <p>Use your arrow keys or the buttons at the bottom right corner to navigate through the example. Moving right along the example will progress through the packets, while moving down will provide more information about the packet you are currently viewing. Press ESC to see a slide overview.</p>
+                </section>
+
+				<section data-background-transition="fade-in" data-background-size="contain" data-background="{% static 'LEARNSSL/PageTheme/img/overview-1.png' %}">
+                    <section>
+                        <h2>Client Hello</h2>
+                        <p>To prepare for the handshake, Alice generates some random data– called the ‘challenge’</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Packet Contents</th>
+                                    <th>Size (Bytes)</th>
+                                    <th>Raw Packet Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="#/1/1">MSG-CLIENT-HELLO</a></td>
+                                    <td>1</td>
+                                    <td>0x01</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/2">CLIENT-VERSION</a></td>
+                                    <td>2</td>
+                                    <td>0x0002</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/3">CIPHER-SPECS-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0009</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/4">SESSION-ID-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0000</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/5">CHALLENGE-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0010</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/6">CIPHER-SPECS-DATA</a></td>
+                                    <td>Min: 3<br>Max: 65535</td>
+                                    <td>0x010080<br>0x060040<br>0x0700C0</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/7">SESSION-ID-DATA</a></td>
+                                    <td>Max: 65535</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/1/8">CHALLENGE-DATA</a></td>
+                                    <td>Max: 65535</td>
+                                    <td>0x04F9420299AB49D98<br>7E20394389F9431</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><a href="#/1/1">Scroll down for more info!</a></p>
+                    </section>
+                    <section>
+                        <h2>MSG-CLIENT-HELLO</h2>
+                        <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full list of the different message types and their corresponding hex values, click here.</p>
+                        <p><a href="#/1">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CLIENT-VERSION</h2>
+                        <p>For SSL 2.0, the client version is always 0x0002. This field is here in the interests of forward compatibility (SSL 3.0 uses the value 0x0300, for example).</p>
+                        <p><a href="#/1">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CIPHER-SPECS-LENGTH</h2>
+                        <p>This field specifies the length the <a href="#/1/6">CIPHER-SPECS-DATA</a> field. In our case, the CIPHER-SPECS-DATA field is 9 bytes long, giving us a value of 0x0009.</p>
+                        <p><a href="#/1">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>SESSION-ID-LENGTH</h2>
+                        <p>This field specifies the length of the <a href="#/1/7">SESSION-ID-DATA</a> field. There is no session ID for this particular exchange, so the length is 0.</p>
+                        <p><a href="#/1">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CHALLENGE-LENGTH</h2>
+                        <p>This field specifies the length of the <a href="#/1/8">CHALLENGE-DATA</a> field. The value and length are chosen by the Client before sending the CLIENT-HELLO message.</p>
+                        <p><a href="#/1">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CIPHER-SPECS-DATA</h2>
+                        <p>This data field contains information about the client's supported cipher suites. Click <a
+                                href="#">HERE</a> for a detailed list of possible cipher suites in SSL 2.0. <br><br>For our example, the client has chosen 3 different cipher suites:</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Suite Name</th>
+                                    <th>Hex Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SSL_CK_RC4_128_WITH_MD5</td>
+                                    <td>0x010080</td>
+                                </tr>
+                                <tr>
+                                    <td>SSL_CK_DES_64_CBC_WITH_MD5</td>
+                                    <td>0x060040</td>
+                                </tr>
+                                <tr>
+                                    <td>SSL_CK_DES_192_EDE3_CBC_WITH_MD5</td>
+                                    <td>0x0700C0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><a href="#/1">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>SESSION-ID-DATA</h2>
+                        <p>If a client has previously established a connection with a server, they can use their
+                            previous session-id (a unique identifier specific to a single user's connection) to resume
+                            their connection to bypass the cipher choice and key exchange sections of the protocol.
+                            In our example, however, the client is connecting to the server for the first time, so
+                            there is no session ID in this packet.</p>
+                        <p><a href="#/1">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CHALLENGE-DATA</h2>
+                        <p>The challenge data is simply random bytes generated by the client and sent to the server.
+                            its value is completely arbitrary, and is used for authentication purposes later on
+                            in the handshake.</p>
+                        <p><a href="#/1">Return to Packet Overview</a></p>
+                    </section>
+				</section>
+
+				<section data-background-transition="fade-in" data-background-size="contain" data-background="{% static 'LEARNSSL/PageTheme/img/overview-2.png' %}">
+					<section>
+                        <h2>Server Hello</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Packet Contents</th>
+                                    <th>Size (Bytes)</th>
+                                    <th>Raw Packet Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="#/2/1">MSG-SERVER-HELLO</a></td>
+                                    <td>1</td>
+                                    <td>0x04</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/2/2">SESSION-ID-HIT</a></td>
+                                    <td>1</td>
+                                    <td>0x00</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/2/3">CERTIFICATE-TYPE</a></td>
+                                    <td>1</td>
+                                    <td>0x01</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/2/4">SERVER-VERSION</a></td>
+                                    <td>2</td>
+                                    <td>0x0002</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/2/5">CERTIFICATE-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0344</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/2/6">CIPHER-SPECS-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0006</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/2/7">CONNECTION-ID-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0020</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/2/8">CERTIFICATE-DATA</a></td>
+                                    <td>Max: 65535</td>
+                                    <td>[certificate data omitted]</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/2/9">CIPHER-SPECS-DATA</a></td>
+                                    <td>Min: 3<br>Max: 65535</td>
+                                    <td>0x010080<br>0x060040</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/2/10">CONNECTION-ID-DATA</a></td>
+                                    <td>Max: 65535</td>
+                                    <td>[32 random bytes of data]</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>MSG-SERVER-HELLO</h2>
+                        <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full list of the different message types and their corresponding hex values, click here.</p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>SESSION-ID-HIT</h2>
+                        <p>If the client sent a session ID in the previous handshake message <b>and</b> the server was able to
+                            find that ID in its database, this value will be set to 1. Otherwise, it is 0.</p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CERTIFICATE-TYPE</h2>
+                        <p>SSL 2.0 only supports one certificate type: SSL_CT_X509_CERTIFICATE. This certificate - given
+                            by the code 0x01 - uses the <a href="https://en.wikipedia.org/wiki/X.509">X.509 certificate</a> standard. All certificates sent under SSL 2.0
+                            should use this standard.</p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>SERVER-VERSION</h2>
+                        <p>Similarly to the CLIENT-VERSION data field, the value 0x0002 represents SSL 2.0.</p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CERTIFICATE-LENGTH</h2>
+                        <p>The certificate length field specifies the length of the server's <a href="https://en.wikipedia.org/wiki/X.509">X.509 certificate</a></p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CIPHER-SPECS-LENGTH</h2>
+                        <p>The server takes the CIPHER-SPECS-DATA sent by the client and edits it by removing all cipher
+                            suites it does not support. The CIPHER-SPECS-LENGTH field defines the length of this new
+                            list.</p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CONNECTION-ID-LENGTH</h2>
+                        <p>This field defines the length of the connection ID that the server has assigned to the
+                            receiving client, given that the client did not already have one.</p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CERTIFICATE-DATA</h2>
+                        <p>This field contains the server's signed certificate. The certificate is given using the X.509
+                            standard.</p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CIPHER-SPECS-DATA</h2>
+                        <p>The server takes the CIPHER-SPECS-DATA sent by the client and edits it by removing all cipher
+                            suites it does not support. It then sends this list back to the client.</p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CONNECTION-ID-DATA</h2>
+                        <p>This field contains the connection ID that the server has assigned to the
+                            receiving client, given that the client did not already have one.</p>
+                        <p><a href="#/2">Return to Packet Overview</a></p>
+                    </section>
+				</section>
+
+				<section data-background-transition="fade-in" data-background-size="contain" data-background="{% static 'LEARNSSL/PageTheme/img/overview-3.png' %}">
+					<section>
+                        <h2>Client Master Key</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Packet Contents</th>
+                                    <th>Size (Bytes)</th>
+                                    <th>Raw Packet Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="#/3/1">MSG-CLIENT-MASTER-KEY</a></td>
+                                    <td>1</td>
+                                    <td>0x02</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/3/2">CIPHER-KIND</a></td>
+                                    <td>3</td>
+                                    <td>0x010080</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/3/3">CLEAR-KEY-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0058</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/3/4">ENCRYPTED-KEY-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0028</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/3/5">KEY-ARG-LENGTH</a></td>
+                                    <td>2</td>
+                                    <td>0x0000</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/3/6">CLEAR-KEY-DATA</a></td>
+                                    <td>Max: 152*</td>
+                                    <td>[88 bytes of clear key data]</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/3/7">ENCRYPTED-KEY-DATA</a></td>
+                                    <td>Min: 40<br>Max: 192</td>
+                                    <td>[40 bytes of encrypted key data]</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#/3/8">KEY-ARG-DATA</a></td>
+                                    <td>Max: 65535</td>
+                                    <td>[N/A]</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>*While the theoretical maximum value for this field is 65535 bytes, the longest key size that SSL 2.0 supports is 192 bytes, and the smallest secret portion of the key that SSL 2.0 allows is 40 bytes, giving this field an effective 152 byte maximum.</p>
+                    </section>
+                    <section>
+                        <h2>MSG-CLIENT-MASTER-KEY</h2>
+                        <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full list of the different message types and their corresponding hex values, click here.</p>
+                        <p><a href="#/3">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CIPHER-KIND</h2>
+                        <p>The client chooses a cipher suite based on the server's edited list, and adds its hex code
+                            here.</p>
+                        <p><a href="#/3">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CLEAR-KEY-LENGTH</h2>
+                        <p>This field gives the length of the CLEAR-KEY-DATA field in this packet. Back in the 90s when
+                            SSL 2.0 was drafted, the U.S. Government required that all ciphers that were exported out of
+                            the country (called export ciphers) have no longer than 40 byte keys -- thus if a
+                            particular cipher used by SSL had a key length of longer than 40 bytes, 40 bytes would
+                            remain secret, while the rest of the key was transmitted in plain text. This restriction is
+                            highly insecure, and has since been lifted.</p>
+                        <p><a href="#/3">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>ENCRYPTED-KEY-LENGTH</h2>
+                        <p>This specifies the length of the encrypted key that is being transmitted. <br>For an explanation as to why some portions of keys are transmitted in the clear, see the slide on
+                            <a href="#/3/3">CLEAR-KEY-LENGTH</a></p>
+                        <p><a href="#/3">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>KEY-ARG-LENGTH</h2>
+                        <p>If the particular cipher suite in use requires key arguments (e.g. an initialization vector)
+                            the length of those arguments will be defined here.</p>
+                        <p><a href="#/3">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CLEAR-KEY-DATA</h2>
+                        <p>This contains the clear portion of the key that is being transmitted.
+                            <br>For an explanation as to why some portions of keys are transmitted in the clear, see the slide on
+                            <a href="#/3/3">CLEAR-KEY-LENGTH</a></p>
+                        <p><a href="#/3">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>ENCRYPTED-KEY-DATA</h2>
+                        <p>This contains the encrypted portion of the key that is being transmitted.
+                            <br>For an explanation as to why some portions of keys are transmitted in the clear, see the slide on
+                            <a href="#/3/3">CLEAR-KEY-LENGTH</a></p>
+                        <p><a href="#/3">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>KEY-ARG-DATA</h2>
+                        <p>If the particular cipher suite in use requires key arguments (e.g. an initialization vector)
+                            those arguments will be defined here.</p>
+                        <p><a href="#/3">Return to Packet Overview</a></p>
+                    </section>
+				</section>
+
+				<section data-background-transition="fade-in" data-background-size="contain" data-background="{% static 'LEARNSSL/PageTheme/img/overview-4.png' %}">
+                    <section>
+                        <h2>Client Finish</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Packet Contents</th>
+                                        <th>Size (Bytes)</th>
+                                        <th>Raw Packet Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#/4/1">MSG-CLIENT-FINISHED</a></td>
+                                        <td>1</td>
+                                        <td>0x03</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#/4/2">CONNECTION-ID</a></td>
+                                        <td>Max: 65534</td>
+                                        <td>[the CONNECTION-ID that was<br>sent by the server previously, now<br>encrypted with the client_write_key]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    <section>
+                        <h2>MSG-CLIENT-FINISHED</h2>
+                        <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full
+                            list of the different message types and their corresponding hex values, click here.</p>
+                        <p><a href="#/4">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CONNECTION-ID</h2>
+                        <p>This field contains the CONNECTION-ID sent before, now encrypted with the client_write_key.</p>
+                        <p><a href="#/4">Return to Packet Overview</a></p>
+                    </section>
+				</section>
+
+                <section data-background-transition="fade-in" data-background-size="contain" data-background="{% static 'LEARNSSL/PageTheme/img/overview-5.png' %}">
+                    <section>
+                        <h2>Server Verify</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Packet Contents</th>
+                                        <th>Size (Bytes)</th>
+                                        <th>Raw Packet Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#/5/1">MSG-SERVER-VERIFY</a></td>
+                                        <td>1</td>
+                                        <td>0x05</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#/5/2">CHALLENGE-DATA</a></td>
+                                        <td>Max: 65534</td>
+                                        <td>[the CHALLENGE-DATA that was sent by<br>Alice in the first handshake message, now<br>encrypted using the server_write_key]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    <section>
+                        <h2>MSG-SERVER-VERIFY</h2>
+                        <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full
+                            list of the different message types and their corresponding hex values, click here.</p>
+                        <p><a href="#/5">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CHALLENGE-DATA</h2>
+                        <p>This field contains the CONNECTION-ID that was sent by the server previously, now encrypted with the client_write_key</p>
+                        <p><a href="#/5">Return to Packet Overview</a></p>
+                    </section>
+				</section>
+
+                <section data-background-transition="fade-in" data-background-size="contain" data-background="{% static 'LEARNSSL/PageTheme/img/overview-6.png' %}">
+                    <section>
+                        <h2>Server Finish</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Packet Contents</th>
+                                        <th>Size (Bytes)</th>
+                                        <th>Raw Packet Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#/6/1">MSG-SERVER-FINISHED</a></td>
+                                        <td>1</td>
+                                        <td>0x06</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#/6/2">SESSION-ID-DATA</a></td>
+                                        <td>Max: 65534</td>
+                                        <td>[A string of random bytes that Alice can use later to restart the connection using the same keys as before. Encrypted using server_write_key]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    <section>
+                        <h2>MSG-SERVER-FINISHED</h2>
+                        <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full
+                            list of the different message types and their corresponding hex values, click here.</p>
+                        <p><a href="#/6">Return to Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>SESSION-ID-DATA</h2>
+                        <p>The server generates a session ID for the client so that the client can restart the connection quickly later on if needed.</p>
+                        <p><a href="#/6">Return to Packet Overview</a></p>
+                    </section>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="{% static 'LEARNSSL/reveal-js/lib/js/head.min.js' %}"></script>
+		<script src="{% static 'LEARNSSL/reveal-js/js/reveal.js' %}"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				center: true,
+                history: true,
+				// rtl: true,
+
+				transition: 'linear',
+				// transitionSpeed: 'slow',
+				// backgroundTransition: 'slide'
+
+                width: 2112,
+                height: 1300,
+			});
+			Reveal.configure({ slideNumber: true });
+
+		</script>
+
+	</body>
+</html>
