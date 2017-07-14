@@ -34,3 +34,13 @@ class ssl20Alt1(View):
 
     def post(self, request):
         return render(request, self.template_name)
+
+
+class ssl20Alt2(View):
+    template_name = 'ssl20alt2.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
