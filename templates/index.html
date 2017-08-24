@@ -55,13 +55,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
                         <a class="page-scroll" href="#lessons">Lessons</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -77,7 +71,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Learn<span>SSL</span></h1>
-                        <p class="intro-text">SSL and SSL accessories.
+                        <p class="intro-text">Learn about SSL and TLS with examples.
                             <br>Learn about SSL and TLS for free!</p>
                         <a href="{% url 'lessons' %}" class="btn btn-default btn-lg">Visit Lesson Page</a>
 {#                        <a href="#about" class="btn btn-circle page-scroll">#}
@@ -90,61 +84,61 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="container content-section text-center">
+    <section id="lessons" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>All About SSL</h2>
                 <p>Thanks for visiting LearnSSL! We're here to teach you all about SSL and TLS, all the way from SSL 2.0 to TLS 1.2. We have guides, interactive animations, and more to help you learn!</p>
-                <p>If you'd like to get started, scroll down and click the 'Visit Lesson Page' button!</p>
-                <p>Or, you can stick around for an introduction/FAQ:</p>
+                <p>If you'd like to get started, choose a lesson from below!</p>
                 <ul style="list-style-type:none">
-                    <li>FAQ 1</li>
-                    <li>FAQ 2</li>
-                    <li>FAQ 3</li>
+                    <li><a href="{% url 'ssl20' %}">SSL 2.0</a></li>
+                    <li>SSL 3.0</li>
+                    <li>TLS 1.0</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <!-- Download Section -->
-    <section id="lessons" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Lessons</h2>
-                    <p>Let's get started! Click the button below to head to the lessons.</p>
-                    <a href="{% url 'lessons' %}" class="btn btn-default btn-lg">Visit Lesson Page</a>
-                </div>
-            </div>
-        </div>
-    </section>
+{#    <section id="lessons" class="content-section text-center">#}
+{#        <div class="download-section">#}
+{#            <div class="container">#}
+{#                <div class="col-lg-8 col-lg-offset-2">#}
+{#                    <h2>Lessons</h2>#}
+{#                    <p>Let's get started! Click the button below to head to the lessons.</p>#}
+{#                    <a href="{% url 'lessons' %}" class="btn btn-default btn-lg">Visit Lesson Page</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
 
     <!-- Contact Section -->
-    <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Me</h2>
-                <p>You don't actually need to contact me! This is just here as a placeholder :)</p>
-                <p><a href="mailto:contact@me.com">contact@me.com</a>
-                </p>
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+{#    <section id="contact" class="container content-section text-center">#}
+{#        <div class="row">#}
+{#            <div class="col-lg-8 col-lg-offset-2">#}
+{#                <h2>Contact Me</h2>#}
+{#                <p>You don't actually need to contact me! This is just here as a placeholder :)</p>#}
+{#                <p><a href="mailto:contact@me.com">contact@me.com</a>#}
+{#                </p>#}
+{#                <ul class="list-inline banner-social-buttons">#}
+{#                    <li>#}
+{#                        <a href="https://twitter.com/" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="https://github.com/" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="https://plus.google.com/" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
 
     <!-- Footer -->
     <footer>
         <div class="container text-center">
+            <br><br><br><br><br><br><br><br><br><br>
             <p>This work was supported by a grant from the National Science Foundation SaTC Program.</p>
         </div>
     </footer>
