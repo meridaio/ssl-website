@@ -21,6 +21,8 @@
 				color: #222;
 			}
 		</style>
+
+        <link href="{% static 'custom.css' %}" rel="stylesheet">
 	</head>
 
 	<body>
@@ -32,6 +34,12 @@
                 <section>
                     <h1>SSL 2.0</h1>
                     <p>Use your arrow keys or the buttons at the bottom right corner to navigate through the example. Moving right along the example will progress through the packets, while moving down will provide more information about the packet you are currently viewing. Press ESC to see a slide overview.</p>
+                </section>
+
+                <section>
+                    <h2>Handshake Overview</h2>
+                    <img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/overview-text.png' %}" alt="Overview" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;">
+                    <p>For our demonstration, the client's messages will be represented by the green arrows, and the server's messages will be represented by the blue arrows.</p>
                 </section>
 
 				<section data-background-transition="fade-in" data-background-size="contain" data-background="{% static 'LEARNSSL/PageTheme/img/overview-1.png' %}">
@@ -47,74 +55,83 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><a href="#/1/1">MSG-CLIENT-HELLO</a></td>
+                                <tr style="cursor: pointer;" onclick="modal.style.display='block';">
+                                    <td>MSG-CLIENT-HELLO</td>
                                     <td>1</td>
                                     <td>0x01</td>
+                                    <div style="font-size: 30px;" id="myModal" class="modal">
+                                        <!-- Modal content -->
+                                        <div class="modal-content">
+                                        <span class="close" onclick="modal.style.display = 'none';">&times;</span>
+                                            <h2>MSG-CLIENT-HELLO</h2>
+                                            <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full list of the different message types and their corresponding hex values, click here.</p>
+                                      </div>
+                                    </div>
                                 </tr>
-                                <tr>
-                                    <td><a href="#/1/2">CLIENT-VERSION</a></td>
+                                <tr style="cursor: pointer;" onclick="modal.style.display='block';">
+                                    <td><a href="#/2/2">CLIENT-VERSION</a></td>
                                     <td>2</td>
                                     <td>0x0002</td>
+                                    </div>
                                 </tr>
-                                <tr>
-                                    <td><a href="#/1/3">CIPHER-SPECS-LENGTH</a></td>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/1/3'">
+                                    <td><a href="#/2/3">CIPHER-SPECS-LENGTH</a></td>
                                     <td>2</td>
                                     <td>0x0009</td>
                                 </tr>
-                                <tr>
-                                    <td><a href="#/1/4">SESSION-ID-LENGTH</a></td>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/1/4'">
+                                    <td><a href="#/2/4">SESSION-ID-LENGTH</a></td>
                                     <td>2</td>
                                     <td>0x0000</td>
                                 </tr>
-                                <tr>
-                                    <td><a href="#/1/5">CHALLENGE-LENGTH</a></td>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/1/5'">
+                                    <td><a href="#/2/5">CHALLENGE-LENGTH</a></td>
                                     <td>2</td>
                                     <td>0x0010</td>
                                 </tr>
-                                <tr>
-                                    <td><a href="#/1/6">CIPHER-SPECS-DATA</a></td>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/1/6'">
+                                    <td><a href="#/2/6">CIPHER-SPECS-DATA</a></td>
                                     <td>Min: 3<br>Max: 65535</td>
                                     <td>0x010080<br>0x060040<br>0x0700C0</td>
                                 </tr>
-                                <tr>
-                                    <td><a href="#/1/7">SESSION-ID-DATA</a></td>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/1/7'">
+                                    <td><a href="#/2/7">SESSION-ID-DATA</a></td>
                                     <td>Max: 65535</td>
                                     <td>N/A</td>
                                 </tr>
-                                <tr>
-                                    <td><a href="#/1/8">CHALLENGE-DATA</a></td>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/1/8'">
+                                    <td><a href="#/2/8">CHALLENGE-DATA</a></td>
                                     <td>Max: 65535</td>
                                     <td>0x04F9420299AB49D98<br>7E20394389F9431</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p><a href="#/1/1">Scroll down for more info!</a></p>
+                        <p><a href="#/2/1">Scroll down for more info!</a></p>
                     </section>
                     <section>
                         <h2>MSG-CLIENT-HELLO</h2>
                         <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full list of the different message types and their corresponding hex values, click here.</p>
-                        <p><a href="#/1">Return to Packet Overview</a></p>
+                        <p><a href="#/2">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CLIENT-VERSION</h2>
                         <p>For SSL 2.0, the client version is always 0x0002. This field is here in the interests of forward compatibility (SSL 3.0 uses the value 0x0300, for example).</p>
-                        <p><a href="#/1">Return to Packet Overview</a></p>
+                        <p><a href="#/2">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CIPHER-SPECS-LENGTH</h2>
-                        <p>This field specifies the length the <a href="#/1/6">CIPHER-SPECS-DATA</a> field. In our case, the CIPHER-SPECS-DATA field is 9 bytes long, giving us a value of 0x0009.</p>
-                        <p><a href="#/1">Return to Packet Overview</a></p>
+                        <p>This field specifies the length the <a href="#/2/6">CIPHER-SPECS-DATA</a> field. In our case, the CIPHER-SPECS-DATA field is 9 bytes long, giving us a value of 0x0009.</p>
+                        <p><a href="#/2">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>SESSION-ID-LENGTH</h2>
-                        <p>This field specifies the length of the <a href="#/1/7">SESSION-ID-DATA</a> field. There is no session ID for this particular exchange, so the length is 0.</p>
-                        <p><a href="#/1">Return to Packet Overview</a></p>
+                        <p>This field specifies the length of the <a href="#/2/7">SESSION-ID-DATA</a> field. There is no session ID for this particular exchange, so the length is 0.</p>
+                        <p><a href="#/2">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CHALLENGE-LENGTH</h2>
-                        <p>This field specifies the length of the <a href="#/1/8">CHALLENGE-DATA</a> field. The value and length are chosen by the Client before sending the CLIENT-HELLO message.</p>
-                        <p><a href="#/1">Return to Packet Overview</a></p>
+                        <p>This field specifies the length of the <a href="#/2/8">CHALLENGE-DATA</a> field. The value and length are chosen by the Client before sending the CLIENT-HELLO message.</p>
+                        <p><a href="#/2">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CIPHER-SPECS-DATA</h2>
@@ -142,7 +159,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p><a href="#/1">Return to Packet Overview</a></p>
+                        <p><a href="#/2">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>SESSION-ID-DATA</h2>
@@ -151,14 +168,14 @@
                             their connection to bypass the cipher choice and key exchange sections of the protocol.
                             In our example, however, the client is connecting to the server for the first time, so
                             there is no session ID in this packet.</p>
-                        <p><a href="#/1">Return to Packet Overview</a></p>
+                        <p><a href="#/2">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CHALLENGE-DATA</h2>
                         <p>The challenge data is simply random bytes generated by the client and sent to the server.
                             its value is completely arbitrary, and is used for authentication purposes later on
                             in the handshake.</p>
-                        <p><a href="#/1">Return to Packet Overview</a></p>
+                        <p><a href="#/2">Return to Client Hello Packet Overview</a></p>
                     </section>
 				</section>
 
@@ -538,7 +555,34 @@
 			});
 			Reveal.configure({ slideNumber: true });
 
+			// Get the modal
+            var modal = document.getElementById('myModal');
+            var modal2 = document.getElementById('myModal2');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
 		</script>
 
 	</body>
+
 </html>
