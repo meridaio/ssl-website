@@ -1,0 +1,174 @@
+{
+  "CLIENT-HELLO": [
+    {
+      "Packet Contents": "MSG-CLIENT-HELLO",
+      "Size (Bytes)": "1",
+      "Raw Packet Data:": "0x01"
+    },
+    {
+      "Packet Contents": "CLIENT VERSION",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0002"
+    },
+    {
+      "Packet Contents": "CIPHER-SPECS-LENGTH",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0009"
+    },
+    {
+      "Packet Contents": "SESSION-ID-LENGTH",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0000"
+    },
+    {
+      "Packet Contents": "CHALLENGE-LENGTH",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0010"
+    },
+    {
+      "Packet Contents": "CIPHER-SPECS-DATA",
+      "Size (Bytes)": "Min: 3<br>Max: 65535",
+      "Raw Packet Data:": "0x010080<br>0x060040<br>0x0700C0"
+    },
+    {
+      "Packet Contents": "SESSION-ID-DATA",
+      "Size (Bytes)": "Max: 65535",
+      "Raw Packet Data:": "N/A"
+    },
+    {
+      "Packet Contents": "CHALLENGE-DATA",
+      "Size (Bytes)": "Max: 65535",
+      "Raw Packet Data:": "0x04F9420299AB49D98<br>7E20394389F9431"
+    }
+  ],
+  "SERVER-HELLO": [
+    {
+      "Packet Contents": "MSG-SERVER-HELLO",
+      "Size (Bytes)": "1",
+      "Raw Packet Data:": "0x04"
+    },
+    {
+      "Packet Contents": "SESSION-ID-HIT",
+      "Size (Bytes)": "1",
+      "Raw Packet Data:": "0x00"
+    },
+    {
+      "Packet Contents": "CERTIFICATE-TYPE",
+      "Size (Bytes)": "1",
+      "Raw Packet Data:": "0x01"
+    },
+    {
+      "Packet Contents": "SERVER-VERSION",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0002"
+    },
+    {
+      "Packet Contents": "CERTIFICATE-LENGTH",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0344"
+    },
+    {
+      "Packet Contents": "CIPHER-SPECS-LENGTH",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0006"
+    },
+    {
+      "Packet Contents": "CONNECTION-ID-LENGTH",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0020"
+    },
+    {
+      "Packet Contents": "CERTIFICATE-DATA",
+      "Size (Bytes)": "Max: 65535",
+      "Raw Packet Data:": "[certificate data omitted]"
+    },
+    {
+      "Packet Contents": "CIPHER-SPECS-DATA",
+      "Size (Bytes)": "Min: 3<br>Max: 65535",
+      "Raw Packet Data:": "0x010080<br>0x060040"
+    },
+    {
+      "Packet Contents": "CONNECTION-ID-DATA",
+      "Size (Bytes)": "Max: 65535",
+      "Raw Packet Data:": "[32 random bytes of data]"
+    }
+  ],
+  "CLIENT-MASTER-KEY": [
+    {
+      "Packet Contents": "MSG-CLIENT-MASTER-KEY",
+      "Size (Bytes)": "1",
+      "Raw Packet Data:": "0x02"
+    },
+    {
+      "Packet Contents": "CIPHER-KIND",
+      "Size (Bytes)": "3",
+      "Raw Packet Data:": "0x010080"
+    },
+    {
+      "Packet Contents": "CLEAR-KEY-LENGTH",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0058"
+    },
+    {
+      "Packet Contents": "ENCRYPTED-KEY-LENGTH",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0028"
+    },
+    {
+      "Packet Contents": "KEY-ARG-LENGTH",
+      "Size (Bytes)": "2",
+      "Raw Packet Data:": "0x0000"
+    },
+    {
+      "Packet Contents": "CLEAR-KEY-DATA",
+      "Size (Bytes)": "Max: 152*",
+      "Raw Packet Data:": "[88 bytes of clear key data]"
+    },
+    {
+      "Packet Contents": "ENCRYPTED-KEY-DATA",
+      "Size (Bytes)": "Min: 40<br>Max: 192",
+      "Raw Packet Data:": "[40 bytes of encrypted key data]"
+    },
+    {
+      "Packet Contents": "KEY-ARG-DATA",
+      "Size (Bytes)": "Max: 65535",
+      "Raw Packet Data:": "[N/A]"
+    }
+  ],
+  "CLIENT-FINISH": [
+    {
+      "Packet Contents": "MSG-CLIENT-FINISHED",
+      "Size (Bytes)": "1",
+      "Raw Packet Data:": "0x03"
+    },
+    {
+      "Packet Contents": "CONNECTION-ID",
+      "Size (Bytes)": "Max: 65534",
+      "Raw Packet Data:": "[the CONNECTION-ID that was<br>sent by the server previously, now<br>encrypted with the client_write_key]"
+    }
+  ],
+  "SERVER-VERIFY": [
+    {
+      "Packet Contents": "MSG-SERVER-VERIFY",
+      "Size (Bytes)": "1",
+      "Raw Packet Data:": "0x05"
+    },
+    {
+      "Packet Contents": "CHALLENGE-DATA",
+      "Size (Bytes)": "Max: 65534",
+      "Raw Packet Data:": "[the CHALLENGE-DATA that was sent by<br>Alice in the first handshake message, now<br>encrypted using the server_write_key]"
+    }
+  ],
+  "SERVER-FINISH": [
+    {
+      "Packet Contents": "MSG-SERVER-FINISHED",
+      "Size (Bytes)": "1",
+      "Raw Packet Data:": "0x06"
+    },
+    {
+      "Packet Contents": "SESSION-ID-DATA",
+      "Size (Bytes)": "Max: 65534",
+      "Raw Packet Data:": "[A string of random bytes that Alice can use later to restart the connection using the same keys as before. Encrypted using server_write_key]"
+    }
+  ]
+}
