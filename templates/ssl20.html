@@ -60,44 +60,44 @@
                             </thead>
                             <tbody>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/2'">
-                                    <td>MSG-CLIENT-HELLO</td>
-                                    <td>1</td>
-                                    <td>0x01</td>
+                                    <td>{{ json.CLIENTHELLO.0.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.0.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.0.data }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/3'">
-                                    <td>CLIENT-VERSION</td>
-                                    <td>2</td>
-                                    <td>0x0002</td>
+                                    <td>{{ json.CLIENTHELLO.1.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.1.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.1.data }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/4'">
-                                    <td>CIPHER-SPECS-LENGTH</td>
-                                    <td>2</td>
-                                    <td>0x0009</td>
+                                    <td>{{ json.CLIENTHELLO.2.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.2.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.2.data }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/5'">
-                                    <td>SESSION-ID-LENGTH</td>
-                                    <td>2</td>
-                                    <td>0x0000</td>
+                                    <td>{{ json.CLIENTHELLO.3.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.3.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.3.data }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/6'">
-                                    <td>CHALLENGE-LENGTH</td>
-                                    <td>2</td>
-                                    <td>0x0010</td>
+                                    <td>{{ json.CLIENTHELLO.4.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.4.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.4.data }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/7'">
-                                    <td>CIPHER-SPECS-DATA</td>
-                                    <td>Min: 3<br>Max: 65535</td>
-                                    <td>0x010080<br>0x060040<br>0x0700C0</td>
+                                    <td>{{ json.CLIENTHELLO.5.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.5.size|safe }}</td>
+                                    <td>{{ json.CLIENTHELLO.5.data|safe }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/8'">
-                                    <td>SESSION-ID-DATA</td>
-                                    <td>Max: 65535</td>
-                                    <td>N/A</td>
+                                    <td>{{ json.CLIENTHELLO.6.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.6.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.6.data }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/9'">
-                                    <td>CHALLENGE-DATA</td>
-                                    <td>Max: 65535</td>
-                                    <td>0x04F9420299AB49D98<br>7E20394389F9431</td>
+                                    <td>{{ json.CLIENTHELLO.7.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.7.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.7.data|safe }}</td>
                                 </tr>
                             </tbody>
                         </table>
