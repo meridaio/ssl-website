@@ -1,0 +1,120 @@
+{
+  "CLIENTHELLO": [
+    {
+      "contents": "Protocol Version",
+      "size": "2",
+      "data": ""
+    },
+    {
+      "contents": "Random",
+      "size": "36",
+      "data": "[gmt_unix_time + 28 random bytes]"
+    },
+    {
+      "contents": "Session ID",
+      "size": "[0...32]",
+      "data": "[unique id]"
+    },
+    {
+      "contents": "Cipher Suites",
+      "size": "[0...(2<sup>16</sup>-1)]",
+      "data": ""
+    },
+    {
+      "contents": "Compression Methods",
+      "size": "[0...(2<sup>8</sup>-1)]",
+      "data": ""
+    }
+  ],
+  "SERVERHELLO": [
+    {
+      "contents": "Protocol Version",
+      "size": "",
+      "data": ""
+    },
+    {
+      "contents": "Random",
+      "size": "",
+      "data": ""
+    },
+    {
+      "contents": "Session ID",
+      "size": "",
+      "data": ""
+    },
+    {
+      "contents": "Cipher Suite",
+      "size": "2",
+      "data": ""
+    },
+    {
+      "contents": "Compression Method",
+      "size": "",
+      "data": ""
+    }
+  ],
+  "CERTIFICATE": [
+    {
+      "contents": "Certificate List",
+      "size": "[1...(2<sup>24</sup>-1)]",
+      "data": ""
+    }
+  ],
+  "KEYEXCHANGE": [
+    {
+      "contents": "RSA Parameters",
+      "size": "",
+      "data": ""
+    },
+    {
+      "contents": "Signed Parameters",
+      "size": "",
+      "data": ""
+    }
+  ],
+  "CERTREQUEST": [
+    {
+      "contents": "Certificate Types",
+      "size": "[1...(2<sup>16</sup>-1)]",
+      "data": ""
+    },
+    {
+      "contents": "Certificate Authorities",
+      "size": "[3...(2<sup>16</sup>-1)]",
+      "data": ""
+    }
+  ],
+  "SERVERHELLODONE": [
+    {
+      "contents": "****",
+      "size": "",
+      "data": ""
+    }
+  ],
+  "CLIENTKEYEXCHANGE": [
+    {
+      "contents": "RSA Encrypted Pre-Master Secret",
+      "size": "",
+      "data": ""
+    }
+  ],
+  "CERTVERIFY": [
+    {
+      "contents": "Signature",
+      "size": "",
+      "data": ""
+    }
+  ],
+  "FINISHED": [
+    {
+      "contents": "MD5 Hash",
+      "size": "16",
+      "data": ""
+    },
+    {
+      "contents": "SHA Hash",
+      "size": "20",
+      "data": ""
+    }
+  ]
+}
