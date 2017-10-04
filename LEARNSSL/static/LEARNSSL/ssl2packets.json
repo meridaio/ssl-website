@@ -1,12 +1,12 @@
 {
-  "CLIENT-HELLO": [
+  "CLIENTHELLO": [
     {
       "contents": "MSG-CLIENT-HELLO",
       "size": "1",
       "data": "0x01"
     },
     {
-      "contents": "CLIENT VERSION",
+      "contents": "CLIENT-VERSION",
       "size": "2",
       "data": "0x0002"
     },
@@ -41,7 +41,7 @@
       "data": "0x04F9420299AB49D98<br>7E20394389F9431"
     }
   ],
-  "SERVER-HELLO": [
+  "SERVERHELLO": [
     {
       "contents": "MSG-SERVER-HELLO",
       "size": "1",
@@ -93,7 +93,7 @@
       "data": "[32 random bytes of data]"
     }
   ],
-  "CLIENT-MASTER-KEY": [
+  "CLIENTMASTERKEY": [
     {
       "contents": "MSG-CLIENT-MASTER-KEY",
       "size": "1",
@@ -135,7 +135,7 @@
       "data": "[N/A]"
     }
   ],
-  "CLIENT-FINISH": [
+  "CLIENTFINISH": [
     {
       "contents": "MSG-CLIENT-FINISHED",
       "size": "1",
@@ -147,7 +147,7 @@
       "data": "[the CONNECTION-ID that was<br>sent by the server previously, now<br>encrypted with the client_write_key]"
     }
   ],
-  "SERVER-VERIFY": [
+  "SERVERVERIFY": [
     {
       "contents": "MSG-SERVER-VERIFY",
       "size": "1",
@@ -159,7 +159,7 @@
       "data": "[the CHALLENGE-DATA that was sent by<br>Alice in the first handshake message, now<br>encrypted using the server_write_key]"
     }
   ],
-  "SERVER-FINISH": [
+  "SERVERFINISH": [
     {
       "contents": "MSG-SERVER-FINISHED",
       "size": "1",
