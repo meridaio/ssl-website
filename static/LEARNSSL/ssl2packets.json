@@ -3,172 +3,172 @@
     {
       "contents": "MSG-CLIENT-HELLO",
       "size": "1",
-      "data": "0x01"
+      "data-s1": "0x01"
     },
     {
       "contents": "CLIENT-VERSION",
       "size": "2",
-      "data": "0x0002"
+      "data-s1": "0x0002"
     },
     {
       "contents": "CIPHER-SPECS-LENGTH",
       "size": "2",
-      "data": "0x0009"
+      "data-s1": "0x0009"
     },
     {
       "contents": "SESSION-ID-LENGTH",
       "size": "2",
-      "data": "0000"
+      "data-s1": "0000"
     },
     {
       "contents": "CHALLENGE-LENGTH",
       "size": "2",
-      "data": "0x0010"
+      "data-s1": "0x0010"
     },
     {
       "contents": "CIPHER-SPECS-DATA",
       "size": "Min: 3<br>Max: 65535",
-      "data": "0x010080<br>0x060040<br>0x0700C0"
+      "data-s1": "0x010080<br>0x060040<br>0x0700C0"
     },
     {
       "contents": "SESSION-ID-DATA",
       "size": "Max: 65535",
-      "data": "N/A"
+      "data-s1": "N/A"
     },
     {
       "contents": "CHALLENGE-DATA",
       "size": "Max: 65535",
-      "data": "0x04F9420299AB49D98<br>7E20394389F9431"
+      "data-s1": "0x04F9420299AB49D98<br>7E20394389F9431"
     }
   ],
   "SERVERHELLO": [
     {
       "contents": "MSG-SERVER-HELLO",
       "size": "1",
-      "data": "0x04"
+      "data-s1": "0x04"
     },
     {
       "contents": "SESSION-ID-HIT",
       "size": "1",
-      "data": "0x00"
+      "data-s1": "0x00"
     },
     {
       "contents": "CERTIFICATE-TYPE",
       "size": "1",
-      "data": "0x01"
+      "data-s1": "0x01"
     },
     {
       "contents": "SERVER-VERSION",
       "size": "2",
-      "data": "0x0002"
+      "data-s1": "0x0002"
     },
     {
       "contents": "CERTIFICATE-LENGTH",
       "size": "2",
-      "data": "0x0344"
+      "data-s1": "0x0344"
     },
     {
       "contents": "CIPHER-SPECS-LENGTH",
       "size": "2",
-      "data": "0x0006"
+      "data-s1": "0x0006"
     },
     {
       "contents": "CONNECTION-ID-LENGTH",
       "size": "2",
-      "data": "0x0020"
+      "data-s1": "0x0020"
     },
     {
       "contents": "CERTIFICATE-DATA",
       "size": "Max: 65535",
-      "data": "[certificate data omitted]"
+      "data-s1": "[certificate data omitted]"
     },
     {
       "contents": "CIPHER-SPECS-DATA",
       "size": "Min: 3<br>Max: 65535",
-      "data": "0x010080<br>0x060040"
+      "data-s1": "0x010080<br>0x060040"
     },
     {
       "contents": "CONNECTION-ID-DATA",
       "size": "Max: 65535",
-      "data": "[32 random bytes of data]"
+      "data-s1": "[32 random bytes of data]"
     }
   ],
   "CLIENTMASTERKEY": [
     {
       "contents": "MSG-CLIENT-MASTER-KEY",
       "size": "1",
-      "data": "0x02"
+      "data-s1": "0x02"
     },
     {
       "contents": "CIPHER-KIND",
       "size": "3",
-      "data": "0x010080"
+      "data-s1": "0x010080"
     },
     {
       "contents": "CLEAR-KEY-LENGTH",
       "size": "2",
-      "data": "0x0058"
+      "data-s1": "0x0058"
     },
     {
       "contents": "ENCRYPTED-KEY-LENGTH",
       "size": "2",
-      "data": "0x0028"
+      "data-s1": "0x0028"
     },
     {
       "contents": "KEY-ARG-LENGTH",
       "size": "2",
-      "data": "0x0000"
+      "data-s1": "0x0000"
     },
     {
       "contents": "CLEAR-KEY-DATA",
       "size": "Max: 152*",
-      "data": "[88 bytes of clear key data]"
+      "data-s1": "[88 bytes of clear key data]"
     },
     {
       "contents": "ENCRYPTED-KEY-DATA",
       "size": "Min: 40<br>Max: 192",
-      "data": "[40 bytes of encrypted key data]"
+      "data-s1": "[40 bytes of encrypted key data]"
     },
     {
       "contents": "KEY-ARG-DATA",
       "size": "Max: 65535",
-      "data": "[N/A]"
+      "data-s1": "[N/A]"
     }
   ],
   "CLIENTFINISH": [
     {
       "contents": "MSG-CLIENT-FINISHED",
       "size": "1",
-      "data": "0x03"
+      "data-s1": "0x03"
     },
     {
       "contents": "CONNECTION-ID",
       "size": "Max: 65534",
-      "data": "[the CONNECTION-ID that was<br>sent by the server previously, now<br>encrypted with the client_write_key]"
+      "data-s1": "[the CONNECTION-ID that was<br>sent by the server previously, now<br>encrypted with the client_write_key]"
     }
   ],
   "SERVERVERIFY": [
     {
       "contents": "MSG-SERVER-VERIFY",
       "size": "1",
-      "data": "0x05"
+      "data-s1": "0x05"
     },
     {
       "contents": "CHALLENGE-DATA",
       "size": "Max: 65534",
-      "data": "[the CHALLENGE-DATA that was sent by<br>Alice in the first handshake message, now<br>encrypted using the server_write_key]"
+      "data-s1": "[the CHALLENGE-DATA that was sent by<br>Alice in the first handshake message, now<br>encrypted using the server_write_key]"
     }
   ],
   "SERVERFINISH": [
     {
       "contents": "MSG-SERVER-FINISHED",
       "size": "1",
-      "data": "0x06"
+      "data-s1": "0x06"
     },
     {
       "contents": "SESSION-ID-DATA",
       "size": "Max: 65534",
-      "data": "[A string of random bytes that Alice can use later to restart the connection using the same keys as before. Encrypted using server_write_key]"
+      "data-s1": "[A string of random bytes that Alice can use later to restart the connection using the same keys as before. Encrypted using server_write_key]"
     }
   ]
 }

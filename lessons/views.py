@@ -31,7 +31,6 @@ class ssl20(View):
     def get(self, request):
         with open(self.packets_json) as data_file:
             data = json.load(data_file)
-        print(type(data))
         context = {'json': data, 'test': {'name': 'Nathan', 'age': 21}}
         return render(request, self.template_name, context)
 

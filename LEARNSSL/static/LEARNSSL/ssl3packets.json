@@ -3,118 +3,118 @@
     {
       "contents": "Protocol Version",
       "size": "2",
-      "data": ""
+      "data-s1": ""
     },
     {
       "contents": "Random",
       "size": "36",
-      "data": "[gmt_unix_time + 28 random bytes]"
+      "data-s1": "[gmt_unix_time + 28 random bytes]"
     },
     {
       "contents": "Session ID",
       "size": "[0...32]",
-      "data": "[unique id]"
+      "data-s1": "[unique id]"
     },
     {
       "contents": "Cipher Suites",
       "size": "[0...(2<sup>16</sup>-1)]",
-      "data": ""
+      "data-s1": ""
     },
     {
       "contents": "Compression Methods",
       "size": "[0...(2<sup>8</sup>-1)]",
-      "data": ""
+      "data-s1": ""
     }
   ],
   "SERVERHELLO": [
     {
       "contents": "Protocol Version",
       "size": "",
-      "data": ""
+      "data-s1": ""
     },
     {
       "contents": "Random",
       "size": "",
-      "data": ""
+      "data-s1": ""
     },
     {
       "contents": "Session ID",
       "size": "",
-      "data": ""
+      "data-s1": ""
     },
     {
       "contents": "Cipher Suite",
       "size": "2",
-      "data": ""
+      "data-s1": ""
     },
     {
       "contents": "Compression Method",
       "size": "",
-      "data": ""
+      "data-s1": ""
     }
   ],
   "CERTIFICATE": [
     {
       "contents": "Certificate List",
       "size": "[1...(2<sup>24</sup>-1)]",
-      "data": ""
+      "data-s1": ""
     }
   ],
   "KEYEXCHANGE": [
     {
       "contents": "RSA Parameters",
       "size": "",
-      "data": ""
+      "data-s1": ""
     },
     {
       "contents": "Signed Parameters",
       "size": "",
-      "data": ""
+      "data-s1": ""
     }
   ],
   "CERTREQUEST": [
     {
       "contents": "Certificate Types",
       "size": "[1...(2<sup>16</sup>-1)]",
-      "data": ""
+      "data-s1": ""
     },
     {
       "contents": "Certificate Authorities",
       "size": "[3...(2<sup>16</sup>-1)]",
-      "data": ""
+      "data-s1": ""
     }
   ],
   "SERVERHELLODONE": [
     {
       "contents": "****",
       "size": "",
-      "data": ""
+      "data-s1": ""
     }
   ],
   "CLIENTKEYEXCHANGE": [
     {
       "contents": "RSA Encrypted Pre-Master Secret",
       "size": "",
-      "data": ""
+      "data-s1": ""
     }
   ],
   "CERTVERIFY": [
     {
       "contents": "Signature",
       "size": "",
-      "data": ""
+      "data-s1": ""
     }
   ],
   "FINISHED": [
     {
       "contents": "MD5 Hash",
       "size": "16",
-      "data": ""
+      "data-s1": ""
     },
     {
       "contents": "SHA Hash",
       "size": "20",
-      "data": ""
+      "data-s1": ""
     }
   ]
 }
