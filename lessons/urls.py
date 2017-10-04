@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^$', views.LessonHome.as_view(), name='lessons'),
     url(r'^ssl20scenario1/', views.ssl20.as_view(), name='ssl20'),
     url(r'^ssl20alt1/', views.ssl20Alt1.as_view(), name='ssl20alt1'),
+    url(r'^ssl3s1/', views.ssl3S1.as_view(), name='ssl3S1'),
 ]

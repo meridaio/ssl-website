@@ -35,6 +35,9 @@ class ssl20(View):
         return render(request, self.template_name, context)
 
     def post(self, request):
+        with open(self.packets_json) as data_file:
+            data = json.load(data_file)
+        context = {'json': data}
         return render(request, self.template_name, context)
 
 
@@ -56,3 +59,26 @@ class ssl20Alt2(View):
 
     def post(self, request):
         return render(request, self.template_name)
+
+
+class ssl3S1(View):
+    template_name = 'ssl3.html'
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    static_url = static('LEARNSSL/ssl3packets.json')
+    packets_json = os.path.join(base_dir, static_url[1:])
+
+    # Might cause problems in deployment? some backslash some forward slash in packets_json
+    # Python doesn't seem to care though
+
+    def get(self, request):
+        with open(self.packets_json) as data_file:
+            print(data_file)
+            data = json.load(data_file)
+        context = {'json': data}
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        with open(self.packets_json) as data_file:
+            data = json.load(data_file)
+        context = {'json': data}
+        return render(request, self.template_name, context)
