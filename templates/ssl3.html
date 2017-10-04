@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 {% load staticfiles %}
-
+{#INCLUDE NOTE ABOUT MISSING SERVERHELLODONE MESSAGE#}
 	<head>
 		<meta charset="utf-8">
 
@@ -162,6 +162,7 @@
 
 				<section>
                     <section>
+                        {#INCLUDE NOTE ABOUT MISSING SERVERHELLODONE MESSAGE#}
                         <h2>Server Hello</h2>
                         <a href="#/3/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-hello.png' %}" alt="server-hello" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
                     </section>
@@ -271,7 +272,7 @@
                         <a href="#/4/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-master-key.png' %}" alt="client-master-key" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
                     </section>
 					<section>
-                        <h2>Client Master Key</h2>
+                        <h2>Certificate</h2>
                         <table>
                             <thead>
                                 <tr>
@@ -282,44 +283,9 @@
                             </thead>
                             <tbody>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/4/2'">
-                                    <td>{{ json.CLIENTMASTERKEY.0.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.0.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.0.data }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/3'">
-                                    <td>{{ json.CLIENTMASTERKEY.1.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.1.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.1.data }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/4'">
-                                    <td>{{ json.CLIENTMASTERKEY.2.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.2.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.2.data }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/5'">
-                                    <td>{{ json.CLIENTMASTERKEY.3.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.3.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.3.data }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/6'">
-                                    <td>{{ json.CLIENTMASTERKEY.4.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.4.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.4.data }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/7'">
-                                    <td>{{ json.CLIENTMASTERKEY.5.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.5.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.5.data }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/8'">
-                                    <td>{{ json.CLIENTMASTERKEY.6.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.6.size|safe }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.6.data }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/9'">
-                                    <td>{{ json.CLIENTMASTERKEY.7.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.7.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.7.data }}</td>
+                                    <td>{{ json.CERTIFICATE.0.contents }}</td>
+                                    <td>{{ json.CERTIFICATE.0.size }}</td>
+                                    <td>{{ json.CERTIFICATE.0.datas1 }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -382,11 +348,11 @@
 
 				<section>
                     <section>
-                        <h2>Client Finish</h2>
+                        <h2>Key Exchange</h2>
                         <a href="#/5/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-finish.png' %}" alt="client-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
                     </section>
                     <section>
-                        <h2>Client Finish</h2>
+                        <h2>Key Exchange</h2>
                             <table>
                                 <thead>
                                     <tr>
@@ -397,14 +363,14 @@
                                 </thead>
                                 <tbody>
                                     <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
-                                    <td>{{ json.CLIENTFINISH.0.contents }}</td>
-                                    <td>{{ json.CLIENTFINISH.0.size }}</td>
-                                    <td>{{ json.CLIENTFINISH.0.data }}</td>
+                                    <td>{{ json.KEYEXCHANGE.0.contents }}</td>
+                                    <td>{{ json.KEYEXCHANGE.0.size }}</td>
+                                    <td>{{ json.KEYEXCHANGE.0.data }}</td>
                                     </tr>
                                     <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
-                                    <td>{{ json.CLIENTFINISH.1.contents }}</td>
-                                    <td>{{ json.CLIENTFINISH.1.size }}</td>
-                                    <td>{{ json.CLIENTFINISH.1.data|safe }}</td>
+                                    <td>{{ json.KEYEXCHANGE.1.contents }}</td>
+                                    <td>{{ json.KEYEXCHANGE.1.size }}</td>
+                                    <td>{{ json.KEYEXCHANGE.1.data|safe }}</td>
                                     </tr>
                                 </tbody>
                             </table>
