@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>SSL 2.0</title>
+		<title>SSL 2.0 Existing Session ID with Verification</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -32,13 +32,13 @@
 			<div class="slides">
 
                 <section>
-                    <h1>SSL 2.0</h1>
+                    <h1>SSL 2.0 Existing Session ID with Verification</h1>
                     <p>Use your arrow keys or the buttons at the bottom right corner to navigate through the example. Moving right along the example will progress through the packets, while moving down will provide more information about the packet you are currently viewing. Press ESC to see a slide overview.</p>
                 </section>
 
                 <section>
                     <h2>Handshake Overview</h2>
-                    <p>In this scenario, the client (represented by the green messages) initiates a connection with a server (represented by the blue messages) for the first time.</p>
+                    <p>In this scenario, the client (represented by the green messages) initiates a connection with a server (represented by the blue messages) that it has previously connected to using a session Identifier. Then, it authenticates itself to the server.</p>
                     <img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/overview-text.png' %}" alt="Overview" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;">
                 </section>
 
@@ -77,7 +77,7 @@
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/5'">
                                     <td>{{ json.CLIENTHELLO.3.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.3.size|safe }}</td>
-                                    <td>{{ json.CLIENTHELLO.3.datas1 }}</td>
+                                    <td>{{ json.CLIENTHELLO.3.datas2 }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/6'">
                                     <td>{{ json.CLIENTHELLO.4.contents }}</td>
@@ -92,7 +92,7 @@
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/8'">
                                     <td>{{ json.CLIENTHELLO.6.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.6.size }}</td>
-                                    <td>{{ json.CLIENTHELLO.6.datas1 }}</td>
+                                    <td>{{ json.CLIENTHELLO.6.datas2 }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/2/9'">
                                     <td>{{ json.CLIENTHELLO.7.contents }}</td>
@@ -120,7 +120,7 @@
                     </section>
                     <section>
                         <h2>SESSION-ID-LENGTH</h2>
-                        <p>This field specifies the length of the <a href="#/2/8">SESSION-ID-DATA</a> field. There is no session ID for this particular exchange, so the length is 0.</p>
+                        <p>This field specifies the length of the <a href="#/2/8">SESSION-ID-DATA</a> field. In this case, there will be a session ID, so this value will be nonzero. </p>
                         <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
@@ -161,8 +161,7 @@
                         <p>If a client has previously established a connection with a server, they can use their
                             previous session-id (a unique identifier specific to a single user's connection) to resume
                             their connection to bypass the cipher choice and key exchange sections of the protocol.
-                            In our example, however, the client is connecting to the server for the first time, so
-                            there is no session ID in this packet.</p>
+                            In this situation, we assume that there is an existing session ID saved from a previous connection, so there will be some data here. </p>
                         <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
@@ -190,56 +189,56 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/2'">
-                                    <td>{{ json.SERVERHELLO.0.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.0.size }}</td>
-                                    <td>{{ json.SERVERHELLO.0.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/3'">
-                                    <td>{{ json.SERVERHELLO.1.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.1.size }}</td>
-                                    <td>{{ json.SERVERHELLO.1.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/4'">
-                                    <td>{{ json.SERVERHELLO.2.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.2.size }}</td>
-                                    <td>{{ json.SERVERHELLO.2.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/5'">
-                                    <td>{{ json.SERVERHELLO.3.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.3.size }}</td>
-                                    <td>{{ json.SERVERHELLO.3.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/6'">
-                                    <td>{{ json.SERVERHELLO.4.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.4.size }}</td>
-                                    <td>{{ json.SERVERHELLO.4.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/7'">
-                                    <td>{{ json.SERVERHELLO.5.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.5.size }}</td>
-                                    <td>{{ json.SERVERHELLO.5.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/8'">
-                                    <td>{{ json.SERVERHELLO.6.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.6.size }}</td>
-                                    <td>{{ json.SERVERHELLO.6.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/9'">
-                                    <td>{{ json.SERVERHELLO.7.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.7.size }}</td>
-                                    <td>{{ json.SERVERHELLO.7.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/10'">
-                                    <td>{{ json.SERVERHELLO.8.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.8.size|safe }}</td>
-                                    <td>{{ json.SERVERHELLO.8.datas1|safe }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/11'">
-                                    <td>{{ json.SERVERHELLO.9.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.9.size }}</td>
-                                    <td>{{ json.SERVERHELLO.9.datas1 }}</td>
-                                </tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/2'">
+																	<td>{{json.SERVERHELLO.0.contents}}</td>
+																	<td>{{json.SERVERHELLO.0.size}}</td>
+																	<td>{{json.SERVERHELLO.0.datas1}}</td>
+															</tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/3'">
+																	<td>{{json.SERVERHELLO.1.contents}}</td>
+																	<td>{{json.SERVERHELLO.1.size}}</td>
+																	<td>{{json.SERVERHELLO.1.datas2}}</td>
+															</tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/4'">
+																<td>{{json.SERVERHELLO.2.contents}}</td>
+																<td>{{json.SERVERHELLO.2.size}}</td>
+																<td>{{json.SERVERHELLO.2.datas2}}</td>
+															</tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/5'">
+																<td>{{json.SERVERHELLO.3.contents}}</td>
+																<td>{{json.SERVERHELLO.3.size}}</td>
+																<td>{{json.SERVERHELLO.3.datas1}}</td>
+															</tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/6'">
+																<td>{{json.SERVERHELLO.4.contents}}</td>
+																<td>{{json.SERVERHELLO.4.size}}</td>
+																<td>{{json.SERVERHELLO.4.datas2}}</td>
+															</tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/7'">
+																<td>{{json.SERVERHELLO.5.contents}}</td>
+																<td>{{json.SERVERHELLO.5.size}}</td>
+																<td>{{json.SERVERHELLO.5.datas2}}</td>
+															</tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/8'">
+																<td>{{json.SERVERHELLO.6.contents}}</td>
+																<td>{{json.SERVERHELLO.6.size}}</td>
+																<td>{{json.SERVERHELLO.6.datas1}}</td>
+															</tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/9'">
+																<td>{{json.SERVERHELLO.7.contents}}</td>
+																<td>{{json.SERVERHELLO.7.size}}</td>
+																<td>{{json.SERVERHELLO.7.datas2}}</td>
+															</tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/10'">
+																<td>{{json.SERVERHELLO.8.contents}}</td>
+																<td>{{json.SERVERHELLO.8.size}}</td>
+																<td>{{json.SERVERHELLO.8.datas2}}</td>
+															</tr>
+															<tr style="cursor: pointer;" onclick="window.document.location='#/3/11'">
+																<td>{{json.SERVERHELLO.9.contents}}</td>
+																<td>{{json.SERVERHELLO.9.size}}</td>
+																<td>{{json.SERVERHELLO.9.datas1}}</td>
+															</tr>
                             </tbody>
                         </table>
                     </section>
@@ -250,15 +249,12 @@
                     </section>
                     <section>
                         <h2>SESSION-ID-HIT</h2>
-                        <p>If the client sent a session ID in the previous handshake message <b>and</b> the server was able to
-                            find that ID in its database, this value will be set to 1. Otherwise, it is 0.</p>
+                        <p>The client sent a session ID in the previous handshake message <b>and</b> the server was able to find in its database, so this value will be set to 1 to signify that.</p>
                         <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CERTIFICATE-TYPE</h2>
-                        <p>SSL 2.0 only supports one certificate type: SSL_CT_X509_CERTIFICATE. This certificate - given
-                            by the code 0x01 - uses the <a href="https://en.wikipedia.org/wiki/X.509">X.509 certificate</a> standard. All certificates sent under SSL 2.0
-                            should use this standard.</p>
+                        <p>Since a session identifier was found, the server doesn't need to be re-authenticated. Therefore, this value is zero. </p>
                         <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
@@ -268,14 +264,12 @@
                     </section>
                     <section>
                         <h2>CERTIFICATE-LENGTH</h2>
-                        <p>The certificate length field specifies the length of the server's <a href="https://en.wikipedia.org/wiki/X.509">X.509 certificate</a></p>
+                        <p> As with the CERTIFICATE-TYPE information, there is no need to send this information if a session ID is found so the value is zero. </a></p>
                         <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CIPHER-SPECS-LENGTH</h2>
-                        <p>The server takes the CIPHER-SPECS-DATA sent by the client and edits it by removing all cipher
-                            suites it does not support. The CIPHER-SPECS-LENGTH field defines the length of this new
-                            list.</p>
+                        <p> Cipher suite information was negotiated in the previous connection between the client and server, and will be contained in the session ID. Therefore, theres no need to resend it so the value is zero. </p>
                         <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
@@ -286,14 +280,12 @@
                     </section>
                     <section>
                         <h2>CERTIFICATE-DATA</h2>
-                        <p>This field contains the server's signed certificate. The certificate is given using the X.509
-                            standard.</p>
+                        <p> Since no certificate is being sent, there's no data here. </p>
                         <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CIPHER-SPECS-DATA</h2>
-                        <p>The server takes the CIPHER-SPECS-DATA sent by the client and edits it by removing all cipher
-                            suites it does not support. It then sends this list back to the client.</p>
+                        <p> Cipher specifics were previously negotiated, so theres no information here. </p>
                         <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
@@ -303,122 +295,7 @@
                         <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
 				</section>
-
-				<section>
-                    <section>
-                        <h2>Client Master Key</h2>
-                        <a href="#/4/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-master-key.png' %}" alt="client-master-key" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
-					<section>
-                        <h2>Client Master Key</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Packet Contents</th>
-                                    <th>Size (Bytes)</th>
-                                    <th>Raw Packet Data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/2'">
-                                    <td>{{ json.CLIENTMASTERKEY.0.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.0.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.0.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/3'">
-                                    <td>{{ json.CLIENTMASTERKEY.1.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.1.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.1.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/4'">
-                                    <td>{{ json.CLIENTMASTERKEY.2.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.2.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.2.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/5'">
-                                    <td>{{ json.CLIENTMASTERKEY.3.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.3.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.3.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/6'">
-                                    <td>{{ json.CLIENTMASTERKEY.4.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.4.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.4.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/7'">
-                                    <td>{{ json.CLIENTMASTERKEY.5.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.5.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.5.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/8'">
-                                    <td>{{ json.CLIENTMASTERKEY.6.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.6.size|safe }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.6.datas1 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/9'">
-                                    <td>{{ json.CLIENTMASTERKEY.7.contents }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.7.size }}</td>
-                                    <td>{{ json.CLIENTMASTERKEY.7.datas1 }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p>*While the theoretical maximum value for this field is 65535 bytes, the longest key size that SSL 2.0 supports is 192 bytes, and the smallest secret portion of the key that SSL 2.0 allows is 40 bytes, giving this field an effective 152 byte maximum.</p>
-                    </section>
-                    <section>
-                        <h2>MSG-CLIENT-MASTER-KEY</h2>
-                        <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full list of the different message types and their corresponding hex values, click here.</p>
-                        <p><a href="#/4/1">Return to Client Master Key Packet Overview</a></p>
-                    </section>
-                    <section>
-                        <h2>CIPHER-KIND</h2>
-                        <p>The client chooses a cipher suite based on the server's edited list, and adds its hex code
-                            here.</p>
-                        <p><a href="#/4/1">Return to Client Master Key Packet Overview</a></p>
-                    </section>
-                    <section>
-                        <h2>CLEAR-KEY-LENGTH</h2>
-                        <p>This field gives the length of the CLEAR-KEY-DATA field in this packet. Back in the 90s when
-                            SSL 2.0 was drafted, the U.S. Government required that all ciphers that were exported out of
-                            the country (called export ciphers) have no longer than 40 byte keys -- thus if a
-                            particular cipher used by SSL had a key length of longer than 40 bytes, 40 bytes would
-                            remain secret, while the rest of the key was transmitted in plain text. This restriction is
-                            highly insecure, and has since been lifted.</p>
-                        <p><a href="#/4/1">Return to Client Master Key Packet Overview</a></p>
-                    </section>
-                    <section>
-                        <h2>ENCRYPTED-KEY-LENGTH</h2>
-                        <p>This specifies the length of the encrypted key that is being transmitted. <br>For an explanation as to why some portions of keys are transmitted in the clear, see the slide on
-                            <a href="#/4/4">CLEAR-KEY-LENGTH</a></p>
-                        <p><a href="#/4/1">Return to Client Master Key Packet Overview</a></p>
-                    </section>
-                    <section>
-                        <h2>KEY-ARG-LENGTH</h2>
-                        <p>If the particular cipher suite in use requires key arguments (e.g. an initialization vector)
-                            the length of those arguments will be defined here.</p>
-                        <p><a href="#/4/1">Return to Client Master Key Packet Overview</a></p>
-                    </section>
-                    <section>
-                        <h2>CLEAR-KEY-DATA</h2>
-                        <p>This contains the clear portion of the key that is being transmitted.
-                            <br>For an explanation as to why some portions of keys are transmitted in the clear, see the slide on
-                            <a href="#/4/4">CLEAR-KEY-LENGTH</a></p>
-                        <p><a href="#/4/1">Return to Client Master Key Packet Overview</a></p>
-                    </section>
-                    <section>
-                        <h2>ENCRYPTED-KEY-DATA</h2>
-                        <p>This contains the encrypted portion of the key that is being transmitted.
-                            <br>For an explanation as to why some portions of keys are transmitted in the clear, see the slide on
-                            <a href="#/4/4">CLEAR-KEY-LENGTH</a></p>
-                        <p><a href="#/4/1">Return to Client Master Key Packet Overview</a></p>
-                    </section>
-                    <section>
-                        <h2>KEY-ARG-DATA</h2>
-                        <p>If the particular cipher suite in use requires key arguments (e.g. an initialization vector)
-                            those arguments will be defined here.</p>
-                        <p><a href="#/4/1">Return to Client Master Key Packet Overview</a></p>
-                    </section>
-				</section>
-
+<!-- Session ID eliminates the need for a master key to be exchanged. -->
 				<section>
                     <section>
                         <h2>Client Finish</h2>
@@ -435,16 +312,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
-                                    <td>{{ json.CLIENTFINISH.0.contents }}</td>
-                                    <td>{{ json.CLIENTFINISH.0.size }}</td>
-                                    <td>{{ json.CLIENTFINISH.0.datas1 }}</td>
-                                    </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
-                                    <td>{{ json.CLIENTFINISH.1.contents }}</td>
-                                    <td>{{ json.CLIENTFINISH.1.size }}</td>
-                                    <td>{{ json.CLIENTFINISH.1.datas1|safe }}</td>
-                                    </tr>
+																	<tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
+																		<td>{{json.CLIENTFINISH.0.contents}}</td>
+																		<td>{{json.CLIENTFINISH.0.size}}</td>
+																		<td>{{json.CLIENTFINISH.0.datas1}}</td>
+																	</tr>
+																	<tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+																		<td>{{json.CLIENTFINISH.1.contents}}</td>
+																		<td>{{json.CLIENTFINISH.1.size}}</td>
+																		<td>{{json.CLIENTFINISH.1.datas1}}</td>
+																	</tr>
                                 </tbody>
                             </table>
                         </section>
@@ -478,14 +355,14 @@
                                 </thead>
                                 <tbody>
                                     <tr style="cursor: pointer;" onclick="window.document.location='#/6/2'">
-                                    <td>{{ json.SERVERVERIFY.0.contents }}</td>
-                                    <td>{{ json.SERVERVERIFY.0.size }}</td>
-                                    <td>{{ json.SERVERVERIFY.0.datas1 }}</td>
+                                        <td>{{json.SERVERVERIFY.0.contents}}</td>
+                                        <td>{{json.SERVERVERIFY.0.size}}</td>
+                                        <td>{{json.SERVERVERIFY.0.datas1}}</td>
                                     </tr>
                                     <tr style="cursor: pointer;" onclick="window.document.location='#/6/3'">
-                                    <td>{{ json.SERVERVERIFY.1.contents }}</td>
-                                    <td>{{ json.SERVERVERIFY.1.size }}</td>
-                                    <td>{{ json.SERVERVERIFY.1.datas1|safe }}</td>
+																			<td>{{json.SERVERVERIFY.1.contents}}</td>
+																			<td>{{json.SERVERVERIFY.1.size}}</td>
+																			<td>{{json.SERVERVERIFY.1.datas1}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -503,7 +380,142 @@
                     </section>
 				</section>
 
-                <section>
+        <section>
+                    <section>
+                        <h2>Request Certificate</h2>
+                        <a href="#/5/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-finish.png' %}" alt="client-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+                    <section>
+                        <h2>Request Certificate</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Packet Contents</th>
+                                        <th>Size (Bytes)</th>
+                                        <th>Raw Packet Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
+                                        <td>{{ json.REQUESTCERTIFICATE.0.contents }}</td>
+                                        <td>{{ json.REQUESTCERTIFICATE.0.size }}</td>
+                                        <td>{{ json.REQUESTCERTIFICATE.0.datas3 }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                      <td>{{ json.REQUESTCERTIFICATE.1.contents }}</td>
+                                      <td>{{ json.REQUESTCERTIFICATE.1.size }}</td>
+                                      <td>{{ json.REQUESTCERTIFICATE.1.datas3 }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                      <td>{{ json.REQUESTCERTIFICATE.2.contents }}</td>
+                                      <td>{{ json.REQUESTCERTIFICATE.2.size }}</td>
+                                      <td>{{ json.REQUESTCERTIFICATE.2.datas3 }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    <section>
+                        <h2>MSG-REQUEST-CERTIFICATE</h2>
+                        <p> This byte notifies the client that this message is a verification request. </p>
+                        <p><a href="#/5/1">Return to Request Certificate Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>AUTHENTICATION-TYPE</h2>
+                        <p> This field specifies the way in which the client is to authenticate itself to the server. There is only one option available though, and it requires sending an encrypted MD5 message to the server. </p>
+                        <p><a href="#/5/1">Return to Request Certificate Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CERTIFICATE-CHALLENGE-DATA</h2>
+                        <p> This data is a random assortment of bits totaling betwen 16 and 32 bytes. It is used by the client to respond to this message. </p>
+                        <p><a href="#/5/1">Return to Request Certificate Packet Overview</a></p>
+                    </section>
+				</section>
+
+
+        <section>
+                    <section>
+                        <h2>Client Certificate</h2>
+                        <a href="#/5/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-finish.png' %}" alt="client-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+                    <section>
+                        <h2>Client Certificate</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Packet Contents</th>
+                                        <th>Size (Bytes)</th>
+                                        <th>Raw Packet Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
+                                      <td>{{ json.CLIENTCERTIFICATE.0.contents }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.0.size }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.0.datas3 }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                      <td>{{ json.CLIENTCERTIFICATE.1.contents }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.1.size }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.1.datas3 }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                      <td>{{ json.CLIENTCERTIFICATE.2.contents }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.2.size }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.2.datas3 }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                      <td>{{ json.CLIENTCERTIFICATE.3.contents }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.3.size }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.3.datas3 }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                      <td>{{ json.CLIENTCERTIFICATE.4.contents }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.4.size }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.4.datas3 }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                      <td>{{ json.CLIENTCERTIFICATE.5.contents }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.5.size }}</td>
+                                      <td>{{ json.CLIENTCERTIFICATE.5.datas3 }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    <section>
+                        <h2>MSG-CLIENT-CERTIFICATE</h2>
+                        <p> This byte notifies the server that this message is a verification response from the client. </p>
+                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CERTIFICATE-TYPE</h2>
+                        <p> This field describes what will be in the certificate data. </p>
+                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CERTIFICATE-LENGTH</h2>
+                        <p> Specifies the length of the certificate data. </p>
+                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>RESPONSE-LENGTH</h2>
+                        <p> Length of the response data field. </p>
+                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>CERTIFICATE-DATA</h2>
+                        <p> Contains an X.509 signed certificate. </p>
+                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
+                    </section>
+                    <section>
+                        <h2>RESPONSE-DATA</h2>
+                        <p> Based on the AUTHENTICATION-TYPE indicated the server, the client will encrypt certain data, including the CERTIFICATE-CHALLENGE-DATA using its private RSA key. </p>
+                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
+                    </section>
+				</section>
+
+
+
+        <section>
                     <section>
                         <h2>Server Finish</h2>
                         <a href="#/7/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-finish.png' %}" alt="server-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
@@ -520,14 +532,14 @@
                                 </thead>
                                 <tbody>
                                     <tr style="cursor: pointer;" onclick="window.document.location='#/7/2'">
-                                    <td>{{ json.SERVERFINISH.0.contents }}</td>
-                                    <td>{{ json.SERVERFINISH.0.size }}</td>
-                                    <td>{{ json.SERVERFINISH.0.datas1 }}</td>
+																			<td>{{json.SERVERFINISH.0.contents}}</td>
+	                                    <td>{{json.SERVERFINISH.0.size}}</td>
+	                                    <td>{{json.SERVERFINISH.0.datas1}}</td>
                                     </tr>
                                     <tr style="cursor: pointer;" onclick="window.document.location='#/7/3'">
-                                    <td>{{ json.SERVERFINISH.1.contents }}</td>
-                                    <td>{{ json.SERVERFINISH.1.size }}</td>
-                                    <td>{{ json.SERVERFINISH.1.datas1 }}</td>
+																			<td>{{json.SERVERFINISH.1.contents}}</td>
+	                                    <td>{{json.SERVERFINISH.1.size}}</td>
+	                                    <td>{{json.SERVERFINISH.1.datas1}}</td>
                                     </tr>
                                 </tbody>
                             </table>
