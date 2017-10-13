@@ -3208,7 +3208,8 @@
 			left: indexh > 0 && indexv == 0 || config.loop,
 			right: indexh < horizontalSlides.length - 1 && indexv == 0|| config.loop,
 			up: indexv > 0,
-			down: indexv < verticalSlides.length - 1
+			//down: indexv < verticalSlides.length - 1
+			down: indexv == 0
 		};
 
 		// reverse horizontal controls for rtl
