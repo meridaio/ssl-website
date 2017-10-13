@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+{% load staticfiles %}
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SSL 2.0</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="{% static 'LEARNSSL/reveal-js/css/reveal.css' %}">
+		<link rel="stylesheet" href="{% static 'LEARNSSL/reveal-js/css/theme/blood.css' %}" id="theme">
+		<style type="text/css" media="screen">
+			.slides section.has-dark-background,
+			.slides section.has-dark-background h2 {
+				color: #fff;
+			}
+			.slides section.has-light-background,
+			.slides section.has-light-background h2 {
+				color: #222;
+			}
+		</style>
+
+        <link href="{% static 'custom.css' %}" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+                <section>
+                    <h1>SSL 3.0 (Negotiate Key)</h1>
+                    <p>Use your arrow keys or the buttons at the bottom right corner to navigate through the example. Moving right along the example will progress through the packets, while moving down will provide more information about the packet you are currently viewing. Press ESC to see a slide overview.</p>
+                </section>
+
+                <section>
+                    <h2>Handshake Overview</h2>
+                    <p>In this scenario, the client (represented by the green messages) initiates a connection with a server (represented by the blue messages) for the first time.</p>
+{#                    <img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/overview-text.png' %}" alt="Overview" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;">#}
+                    <p>[image goes here]</p>
+                </section>
+
+				<section>
+                    <section>
+                        <h2>Client Hello</h2>
+                        <a href="#/2/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-hello.png' %}" alt="Overview" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+                    <section>
+                        <h2>Client Hello</h2>
+                        <p>[client hello description]</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Packet Contents</th>
+                                    <th>Size (Bytes)</th>
+                                    <th>Raw Packet Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/2'">
+                                    <td>{{ json.CLIENTHELLO.0.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.0.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.0.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/3'">
+                                    <td>{{ json.CLIENTHELLO.1.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.1.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.1.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/4'">
+                                    <td>{{ json.CLIENTHELLO.2.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.2.size }}</td>
+                                    <td>{{ json.CLIENTHELLO.2.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/5'">
+                                    <td>{{ json.CLIENTHELLO.3.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.3.size|safe }}</td>
+                                    <td>{{ json.CLIENTHELLO.3.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/6'">
+                                    <td>{{ json.CLIENTHELLO.4.contents }}</td>
+                                    <td>{{ json.CLIENTHELLO.4.size|safe }}</td>
+                                    <td>{{ json.CLIENTHELLO.4.datas1 }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><a href="#/2/2">Scroll down for more info!</a></p>
+                    </section>
+				</section>
+
+				<section>
+                    <section>
+                        <h2>Server Hello</h2>
+                        <a href="#/3/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-hello.png' %}" alt="server-hello" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+					<section>
+                        <h2>Server Hello</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Packet Contents</th>
+                                    <th>Size (Bytes)</th>
+                                    <th>Raw Packet Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/2'">
+                                    <td>{{ json.SERVERHELLO.0.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.0.size }}</td>
+                                    <td>{{ json.SERVERHELLO.0.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/3'">
+                                    <td>{{ json.SERVERHELLO.1.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.1.size }}</td>
+                                    <td>{{ json.SERVERHELLO.1.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/4'">
+                                    <td>{{ json.SERVERHELLO.2.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.2.size }}</td>
+                                    <td>{{ json.SERVERHELLO.2.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/5'">
+                                    <td>{{ json.SERVERHELLO.3.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.3.size }}</td>
+                                    <td>{{ json.SERVERHELLO.3.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/6'">
+                                    <td>{{ json.SERVERHELLO.4.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.4.size }}</td>
+                                    <td>{{ json.SERVERHELLO.4.datas1 }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>Server Key Exchange</h2>
+                        <a href="#/3/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-hello.png' %}" alt="server-hello" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+					<section>
+                        <h2>Server Hello</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Packet Contents</th>
+                                    <th>Size (Bytes)</th>
+                                    <th>Raw Packet Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/2'">
+                                    <td>{{ json.SERVERHELLO.0.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.0.size }}</td>
+                                    <td>{{ json.SERVERHELLO.0.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/3'">
+                                    <td>{{ json.SERVERHELLO.1.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.1.size }}</td>
+                                    <td>{{ json.SERVERHELLO.1.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/4'">
+                                    <td>{{ json.SERVERHELLO.2.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.2.size }}</td>
+                                    <td>{{ json.SERVERHELLO.2.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/5'">
+                                    <td>{{ json.SERVERHELLO.3.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.3.size }}</td>
+                                    <td>{{ json.SERVERHELLO.3.datas1 }}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/6'">
+                                    <td>{{ json.SERVERHELLO.4.contents }}</td>
+                                    <td>{{ json.SERVERHELLO.4.size }}</td>
+                                    <td>{{ json.SERVERHELLO.4.datas1 }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+				</section>
+
+				<section>
+                    <section>
+                        <h2>Server Finish</h2>
+                        <a href="#/5/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-finish.png' %}" alt="client-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+                    <section>
+                        <h2>Server Finish</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Packet Contents</th>
+                                        <th>Size (Bytes)</th>
+                                        <th>Raw Packet Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
+                                    <td>{{ json.FINISHED.0.contents }}</td>
+                                    <td>{{ json.FINISHED.0.size }}</td>
+                                    <td>{{ json.FINISHED.0.datas1 }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <td>{{ json.FINISHED.1.contents }}</td>
+                                    <td>{{ json.FINISHED.1.size }}</td>
+                                    <td>{{ json.FINISHED.1.datas1|safe }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>Change Cipher Spec (client)</h2>
+                        <a href="#/6/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-verify.png' %}" alt="server-verify" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+                    <section>
+                        <h2>Change Cipher Spec (client)</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Packet Contents</th>
+                                        <th>Size (Bytes)</th>
+                                        <th>Raw Packet Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/6/2'">
+                                    <td>{{ change_ciphper_spec }}</td>
+                                    <td>{{ 1 }}</td>
+                                    <td>{{ 0x01 }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>Client Finish</h2>
+                        <a href="#/7/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-finish.png' %}" alt="server-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+                    <section>
+                        <h2>Client Finish</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Packet Contents</th>
+                                        <th>Size (Bytes)</th>
+                                        <th>Raw Packet Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/2'">
+                                    <td>{{ json.FINISHED.0.contents }}</td>
+                                    <td>{{ json.FINISHED.0.size }}</td>
+                                    <td>{{ json.FINISHED.0.datas1 }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/3'">
+                                    <td>{{ json.FINISHED.1.contents }}</td>
+                                    <td>{{ json.FINISHED.1.size }}</td>
+                                    <td>{{ json.FINISHED.1.datas1 }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="{% static 'LEARNSSL/reveal-js/lib/js/head.min.js' %}"></script>
+		<script src="{% static 'LEARNSSL/reveal-js/js/reveal.js' %}"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				center: true,
+                history: true,
+				// rtl: true,
+
+				transition: 'linear',
+				// transitionSpeed: 'slow',
+				// backgroundTransition: 'slide'
+
+                width: 2112,
+                height: 1300,
+			});
+			Reveal.configure({ slideNumber: true });
+
+			// Get the modal
+            var modal = document.getElementById('myModal');
+            var modal2 = document.getElementById('myModal2');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+		</script>
+
+	</body>
+
+</html>

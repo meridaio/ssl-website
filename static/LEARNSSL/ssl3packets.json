@@ -3,7 +3,7 @@
     {
       "contents": "Protocol Version",
       "size": "2",
-      "datas1": "*"
+      "datas1": "0x0003"
     },
     {
       "contents": "Random",
@@ -12,76 +12,88 @@
     },
     {
       "contents": "Session ID",
-      "size": "[0...32]",
+      "size": "<0...32>",
       "datas1": "[unique id]"
     },
     {
       "contents": "Cipher Suites",
       "size": "[0...(2<sup>16</sup>-1)]",
-      "datas1": "*"
+      "datas1": "[list of cipher suites the client supports]"
     },
     {
       "contents": "Compression Methods",
       "size": "[0...(2<sup>8</sup>-1)]",
-      "datas1": "*"
+      "datas1": "[list of compression methods the client supports]"
     }
   ],
   "SERVERHELLO": [
     {
       "contents": "Protocol Version",
-      "size": "*",
-      "datas1": "*"
+      "size": "2",
+      "datas1": "0x0003"
     },
     {
       "contents": "Random",
-      "size": "*",
-      "datas1": "*"
+      "size": "36",
+      "datas1": "[gmt_unix_time + 28 random bytes]"
     },
     {
       "contents": "Session ID",
-      "size": "*",
-      "datas1": "*"
+      "size": "<0...32>",
+      "datas1": "[The same session ID supplied by the client (assuming ID was found)]"
     },
     {
       "contents": "Cipher Suite",
       "size": "2",
-      "datas1": "*"
+      "datas1": "[The server's chosen cipher suite]"
     },
     {
       "contents": "Compression Method",
       "size": "*",
-      "datas1": "*"
+      "datas1": "[The server's chosen compression method]"
     }
   ],
-  "CERTIFICATE": [
+  "SERVERCERTIFICATE": [
     {
       "contents": "Certificate List",
       "size": "[1...(2<sup>24</sup>-1)]",
-      "datas1": "*"
+      "datas1": "[Server's Certificate Chain]"
     }
   ],
-  "KEYEXCHANGE": [
+  "CLIENTCERTIFICATE": [
     {
-      "contents": "RSA Parameters",
-      "size": "*",
-      "datas1": "*"
+      "contents": "Certificate List",
+      "size": "[1...(2<sup>24</sup>-1)]",
+      "datas1": "[Client's Certificate Chain]"
+    }
+  ],
+  "SERVERKEYEXCHANGE": [
+    {
+      "contents": "RSA Modulus",
+      "size": "<1...2<sup>16</sup>-1>",
+      "datas1": "[Server's temporary RSA Modulus]"
+    },
+    {
+      "contents": "RSA Exponent",
+      "size": "<1...2<sup>16</sup>-1>",
+      "datas1": "[Server's temporary RSA public exponent]"
     },
     {
       "contents": "Signed Parameters",
-      "size": "*",
-      "datas1": "*"
+      "size": "16 (MD5) or 20 (SHA-1)",
+      "datas1": "[signed hash of the RSA parameters]"
     }
   ],
   "CERTREQUEST": [
     {
       "contents": "Certificate Types",
       "size": "[1...(2<sup>16</sup>-1)]",
-      "datas1": "*"
+      "datas1": "[list of types of certificates requested]"
     },
     {
       "contents": "Certificate Authorities",
       "size": "[3...(2<sup>16</sup>-1)]",
-      "datas1": "*"
+      "datas1": "[list of distinguished names of acceptable CAs]"
     }
   ],
   "SERVERHELLODONE": [
@@ -109,12 +121,12 @@
     {
       "contents": "MD5 Hash",
       "size": "16",
-      "datas1": "*"
+      "datas1": "[hash of all previous messages]"
     },
     {
       "contents": "SHA Hash",
       "size": "20",
-      "datas1": "*"
+      "datas1": "[hash of all previous messages]"
     }
   ]
 }
