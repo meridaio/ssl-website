@@ -18,7 +18,8 @@
     {
       "contents": "SESSION-ID-LENGTH",
       "size": "2",
-      "datas1": "0000"
+      "datas1": "0000",
+      "datas2": "0x0010"
     },
     {
       "contents": "CHALLENGE-LENGTH",
@@ -33,7 +34,8 @@
     {
       "contents": "SESSION-ID-DATA",
       "size": "Max: 65535",
-      "datas1": "N/A"
+      "datas1": "N/A",
+      "datas2": "0xF830A948170059403<br>F94837A049E0D90"
     },
     {
       "contents": "CHALLENGE-DATA",
@@ -50,12 +52,14 @@
     {
       "contents": "SESSION-ID-HIT",
       "size": "1",
-      "datas1": "0x00"
+      "datas1": "0x00",
+      "datas2": "0x01"
     },
     {
       "contents": "CERTIFICATE-TYPE",
       "size": "1",
-      "datas1": "0x01"
+      "datas1": "0x01",
+      "datas2": "0x00"
     },
     {
       "contents": "SERVER-VERSION",
@@ -65,12 +69,14 @@
     {
       "contents": "CERTIFICATE-LENGTH",
       "size": "2",
-      "datas1": "0x0344"
+      "datas1": "0x0344",
+      "datas2": "0x0000"
     },
     {
       "contents": "CIPHER-SPECS-LENGTH",
       "size": "2",
-      "datas1": "0x0006"
+      "datas1": "0x0006",
+      "datas2": "0x0000"
     },
     {
       "contents": "CONNECTION-ID-LENGTH",
@@ -80,12 +86,14 @@
     {
       "contents": "CERTIFICATE-DATA",
       "size": "Max: 65535",
-      "datas1": "[certificate data omitted]"
+      "datas1": "[certificate data omitted]",
+      "datas2": "N/A"
     },
     {
       "contents": "CIPHER-SPECS-DATA",
       "size": "Min: 3<br>Max: 65535",
-      "datas1": "0x010080<br>0x060040"
+      "datas1": "0x010080<br>0x060040",
+      "datas2": "N/A"
     },
     {
       "contents": "CONNECTION-ID-DATA",
@@ -157,6 +165,55 @@
       "contents": "CHALLENGE-DATA",
       "size": "Max: 65534",
       "datas1": "[the CHALLENGE-DATA that was sent by<br>Alice in the first handshake message, now<br>encrypted using the server_write_key]"
+    }
+  ],
+  "REQUESTCERTIFICATE": [
+    {
+        "contents": "MSG-REQUEST-CERTIFICATE",
+        "size": "1",
+        "datas3": "0x0001"
+      },
+      {
+        "contents": "AUTHENTICATION-TYPE",
+        "size": "1",
+        "datas3": "0x0001"
+      },
+      {
+        "contents": "CERTIFICATE-CHALLENGE-DATA",
+        "size": "1",
+        "datas3": "16 - 32 random bytes of data"
+      }
+  ],
+  "CLIENTCERTIFICATE": [
+    {
+      "contents": "MSG-CLIENT-CERTIFICATE",
+      "size": "1",
+      "datas3": "0x01"
+    },
+    {
+      "contents": "CERTIFICATE-TYPE",
+      "size": "1",
+      "datas3": "0x0001"
+    },
+    {
+      "contents": "CERTIFICATE-LENGTH",
+      "size": "2",
+      "datas3": "0x0001"
+    },
+    {
+      "contents": "RESPONSE-LENGTH",
+      "size": "2",
+      "datas3": "0x0001"
+    },
+    {
+      "contents": "CERTIFICATE-DATA",
+      "size": "Range: 0x0000 - 0xffff",
+      "datas3": "[Contains data defined by the certificate type value]"
+    },
+    {
+      "contents": "RESPONSE-DATA",
+      "size": "Range: 0x000 - 0xffff",
+      "datas3": "[Contains authentication response data which is a function of the AUTHENTICATION-TYPE data sent by the server above in the previous packet.]"
     }
   ],
   "SERVERFINISH": [
