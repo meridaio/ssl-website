@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 {% load staticfiles %}
-
+{#INCLUDE NOTE ABOUT MISSING SERVERHELLODONE MESSAGE#}
 	<head>
 		<meta charset="utf-8">
 
@@ -162,6 +162,7 @@
 
 				<section>
                     <section>
+                        {#INCLUDE NOTE ABOUT MISSING SERVERHELLODONE MESSAGE#}
                         <h2>Server Hello</h2>
                         <a href="#/3/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-hello.png' %}" alt="server-hello" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
                     </section>
@@ -272,6 +273,7 @@
                     </section>
 					<section>
                         <h2>Change Cipher Spec (server)</h2>
+
                         <table>
                             <thead>
                                 <tr>
@@ -282,9 +284,27 @@
                             </thead>
                             <tbody>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/4/2'">
-                                    <td>{{ change_ciphper_spec }}</td>
-                                    <td>{{ 1 }}</td>
-                                    <td>{{ 0x01 }}</td>
+                                <td>{{ change_ciphper_spec }}</td>
+                                <td>{{ 1 }}</td>
+                                <td>{{ 0x01 }}</td>
+                            </tbody>
+                        </table>
+                    </section>
+                        <section>
+                        <h2>Certificate</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Packet Contents</th>
+                                    <th>Size (Bytes)</th>
+                                    <th>Raw Packet Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/2'">
+                                    <td>{{ json.CERTIFICATE.0.contents }}</td>
+                                    <td>{{ json.CERTIFICATE.0.size }}</td>
+                                    <td>{{ json.CERTIFICATE.0.datas1 }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -351,7 +371,7 @@
                     </section>
                     <section>
                         <h2>Server Finish</h2>
-                            <table>
+                        <table>
                                 <thead>
                                     <tr>
                                         <th>Packet Contents</th>
@@ -369,6 +389,37 @@
                                     <td>{{ json.FINISHED.1.contents }}</td>
                                     <td>{{ json.FINISHED.1.size }}</td>
                                     <td>{{ json.FINISHED.1.datas1|safe }}</td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </section>
+                </section>
+
+                    <section>
+                        <section>
+                            <h2>Key Exchange</h2>
+                        <a href="#/5/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-finish.png' %}" alt="client-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                        </section>
+                        <section>
+                            <h2>Key Exchange</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Packet Contents</th>
+                                        <th>Size (Bytes)</th>
+                                        <th>Raw Packet Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
+                                    <td>{{ json.KEYEXCHANGE.0.contents }}</td>
+                                    <td>{{ json.KEYEXCHANGE.0.size }}</td>
+                                    <td>{{ json.KEYEXCHANGE.0.data }}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <td>{{ json.KEYEXCHANGE.1.contents }}</td>
+                                    <td>{{ json.KEYEXCHANGE.1.size }}</td>
+                                    <td>{{ json.KEYEXCHANGE.1.data|safe }}</td>
                                     </tr>
                                 </tbody>
                             </table>
