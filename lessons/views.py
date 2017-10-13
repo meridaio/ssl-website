@@ -94,10 +94,10 @@ class ssl20S3(View):
         with open(self.packets_json) as data_file:
             data = json.load(data_file)
         context = {"json": data}
-        return render(request, self.template_name)
+        return render(request, self.template_name, context)
 
     def post(self, request):
-        return render(request, self.template_name)
+        return render(request, self.template_name, context)
 
 
 class ssl3S1(View):
