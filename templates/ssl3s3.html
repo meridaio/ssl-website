@@ -46,6 +46,11 @@
 				<section>
                     <section>
                         <h2>Client Hello</h2>
+                        <a href="#/2/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-hello.png' %}" alt="Overview" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+                    <section>
+                        <h2>Client Hello</h2>
+                        <p>[client hello description]</p>
                         <table>
                             <thead>
                                 <tr>
@@ -87,6 +92,10 @@
 				</section>
 
 				<section>
+                    <section>
+                        <h2>Server Hello</h2>
+                        <a href="#/3/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-hello.png' %}" alt="server-hello" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
 					<section>
                         <h2>Server Hello</h2>
                         <table>
@@ -129,8 +138,12 @@
 				</section>
 
                 <section>
-					<section>
+                    <section>
                         <h2>Server Key Exchange</h2>
+                        <a href="#/3/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-hello.png' %}" alt="server-hello" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+					<section>
+                        <h2>Server Hello</h2>
                         <table>
                             <thead>
                                 <tr>
@@ -173,6 +186,10 @@
 				<section>
                     <section>
                         <h2>Server Finish</h2>
+                        <a href="#/5/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-finish.png' %}" alt="client-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
+                    </section>
+                    <section>
+                        <h2>Server Finish</h2>
                             <table>
                                 <thead>
                                     <tr>
@@ -195,33 +212,6 @@
                                 </tbody>
                             </table>
                         </section>
-				</section>
-
-                <section>
-                    <section>
-                        <h2>Client Key Exchange</h2>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Packet Contents</th>
-                                        <th>Size (Bytes)</th>
-                                        <th>Raw Packet Data</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
-                                    <td>{{ json.CLIENTKEYEXCHANGE.0.contents }}</td>
-                                    <td>{{ json.CLIENTKEYEXCHANGE.0.size }}</td>
-                                    <td>{{ json.CLIENTKEYEXCHANGE.0.data }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                    </section>
-                <section>
-                        <h2>MSG-CLIENT-FINISHED</h2>
-                        <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full
-                            list of the different message types and their corresponding hex values, click here.</p>
-                    </section>
 				</section>
 
                 <section>

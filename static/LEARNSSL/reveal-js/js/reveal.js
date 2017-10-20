@@ -3209,7 +3209,7 @@
 			right: indexh < horizontalSlides.length - 1 && indexv == 0|| config.loop,
 			up: indexv > 0,
 			//down: indexv < verticalSlides.length - 1
-			down: indexv == 0
+			down: indexv == 1000
 		};
 
 		// reverse horizontal controls for rtl
@@ -4151,7 +4151,7 @@
 	function navigateUp() {
 
 		if( ( indexv > 1 )) {
-			slide( indexh, 1)
+			slide( indexh, 0)
 		}
 		// Prioritize hiding fragments
 		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().up ) {

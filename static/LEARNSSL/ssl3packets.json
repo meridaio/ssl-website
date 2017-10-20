@@ -13,7 +13,7 @@
     {
       "contents": "Session ID",
       "size": "<0...32>",
-      "datas1": "[unique id]"
+      "datas1": "0x12345678"
     },
     {
       "contents": "Cipher Suites",
@@ -49,7 +49,7 @@
     },
     {
       "contents": "Compression Method",
-      "size": "*",
+      "size": "2",
       "datas1": "[The server's chosen compression method]"
     }
   ],
