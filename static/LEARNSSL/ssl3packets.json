@@ -40,7 +40,7 @@
     {
       "contents": "Session ID",
       "size": "<0...32>",
-      "datas1": "[The same session ID supplied by the client (assuming ID was found)]"
+      "datas1": "0x12345678"
     },
     {
       "contents": "Cipher Suite",

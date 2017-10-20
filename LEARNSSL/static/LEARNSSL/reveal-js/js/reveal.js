@@ -174,7 +174,7 @@
 			pdfPageHeightOffset: -1,
 
 			// Number of slides away from the current that are visible
-			viewDistance: 3,
+			viewDistance: 10,
 
 			// The display mode that will be used to show slides
 			display: 'block',
@@ -3209,7 +3209,7 @@
 			right: indexh < horizontalSlides.length - 1 && indexv == 0|| config.loop,
 			up: indexv > 0,
 			//down: indexv < verticalSlides.length - 1
-			down: indexv == 0
+			down: indexv == 1000
 		};
 
 		// reverse horizontal controls for rtl
@@ -4150,8 +4150,11 @@
 
 	function navigateUp() {
 
+		if( ( indexv > 1 )) {
+			slide( indexh, 0)
+		}
 		// Prioritize hiding fragments
-		if( ( isOverview() || previousFragment() === false ) && availableRoutes().up ) {
+		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().up ) {
 			slide( indexh, indexv - 1 );
 		}
 
