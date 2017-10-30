@@ -3206,7 +3206,8 @@
 
 		var routes = {
 			left: indexh > 0 && indexv == 0 || config.loop,
-			right: indexh < horizontalSlides.length - 1 && indexv == 0|| config.loop,
+			//right: indexh < horizontalSlides.length - 1 && indexv == 0|| config.loop,
+			right: indexh == 0,
 			up: indexv > 0,
 			//down: indexv < verticalSlides.length - 1
 			down: indexv == 1000
@@ -4128,7 +4129,11 @@
 		}
 		// Normal navigation
 		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
-			slide( indexh - 1 );
+			//slide( indexh - 1 );
+			if (indexh == 1)
+				slide(indexh - 1);
+			else
+				slide(1);
 		}
 
 	}
