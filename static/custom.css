@@ -5,3 +5,14 @@
 .class-gray {
     color:darkgray;
 }
+
+tbody tr:hover{
+    background:#303030;
+}
+
+div.homebutton {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index:10;
+}
