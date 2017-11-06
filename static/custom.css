@@ -16,3 +16,8 @@ div.homebutton {
     left: 10px;
     z-index:10;
 }
+
+.reveal .controls {
+	left: 100px;
+	top: 0px;
+}
