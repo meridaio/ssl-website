@@ -16,8 +16,27 @@ div.homebutton {
     left: 10px;
     z-index:10;
 }
+div.homebutton img{
+    width: 90px;
+}
 
 .reveal .controls {
-	left: 100px;
-	top: 0px;
+	top: 100px;
+	left: 0px;
 }
+/*.reveal .controls .navigate-right,*/
+/*.reveal .controls .navigate-right.enabled {*/
+    /*visibility: hidden;*/
+/*}*/
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+    visibility: hidden;
+}
+/*.reveal .controls .navigate-left,*/
+/*.reveal .controls .navigate-left.enabled {*/
+
+/*}*/
+/*.reveal .controls .navigate-up,*/
+/*.reveal .controls .navigate-up.enabled {*/
+    /*top: 30px;*/
+/*}*/

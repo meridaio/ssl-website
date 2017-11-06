@@ -124,9 +124,9 @@
   "CLIENTKEYEXCHANGE": [
     {
       "contents": "RSA Encrypted Pre-Master Secret",
-      "size": "*",
+      "size": "48*",
       "datas1": "*",
-      "datas2": "*"
+      "datas2": "[client version + 46 random bytes]"
     }
   ],
   "CERTVERIFY": [

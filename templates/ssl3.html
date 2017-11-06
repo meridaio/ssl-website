@@ -26,28 +26,36 @@
 	</head>
 
 	<body>
+	<a href="{% url 'lessons' %}" draggable="false">
+	<div class="homebutton">
+        <img src="{% static 'LEARNSSL/PageTheme/img/homeicon2.png' %}" alt="" draggable="false">
+    </div>
+    </a>
 
 		<div class="reveal">
 
 			<div class="slides">
 
                 <section>
-                    <h1>SSL 3.0</h1>
-                    <p>Use your arrow keys or the buttons at the bottom right corner to navigate through the example. Moving right along the example will progress through the packets, while moving down will provide more information about the packet you are currently viewing. Press ESC to see a slide overview.</p>
+                    <h1>SSL 3.0 (Existing Session ID)</h1>
+                    <p>Use the arrows at the top left corner or the arrow keys on your keyboard to navigate through the
+                    example. The left key will take you back to the overview. The up key will take you back to a packet's detailed view. Press the
+                    home button to return to the lessons page. When you are ready to begin, move to the right.</p>
                 </section>
 
                 <section>
                     <h2>Handshake Overview</h2>
-                    <p>In this scenario, the client (represented by the green messages) initiates a connection with a server (represented by the blue messages) for the first time.</p>
-                    <img src="{% static 'LEARNSSL/PageTheme/img/new_ssl2.png' %}" alt="Overview" width="1080" height="526" style="border:0; box-shadow:0 0 0 grey;" usemap="#mapname">
+                    <p>In this scenario, the client (represented by the green messages) resumes a connection with a server (represented by the blue messages) they have previously connected to.</p>
+                    <img src="{% static 'LEARNSSL/PageTheme/img/overviews/ssl3s1.png' %}" alt="Overview" width="1080" height="601" style="border:0; box-shadow:0 0 0 grey;" usemap="#mapname">
 
+                    <p>Click on a message name to be taken to that message's detailed view.</p>
                     <map name="mapname">
-                        <area shape="rect" coords="32,71,172,464" href="#/2">
-                        <area shape="rect" coords="197,71,362,464" href="#/3">
-                        <area shape="rect" coords="367,71,506,464" href="#/4">
-                        <area shape="rect" coords="506,71,639,464" href="#/5">
-                        <area shape="rect" coords="640,71,772,464" href="#/6">
-                        <area shape="rect" coords="782,71,963,464" href="#/7">
+                        <area shape="rect" coords="41,144,206,480" href="#/2">
+                        <area shape="rect" coords="214,144,356,480" href="#/3">
+                        <area shape="rect" coords="357,144,499,480" href="#/4">
+                        <area shape="rect" coords="500,144,658,480" href="#/5">
+                        <area shape="rect" coords="681,144,836,480" href="#/6">
+                        <area shape="rect" coords="837,144,976,480" href="#/7">
                     </map>
                 </section>
 
@@ -103,11 +111,12 @@
                         <h2>Session ID</h2>
                         <p>If the client has a session ID from a previous connection to the server that they want to
                         resume, this field will contain that session ID. If the client wishes to negotiate a new key,
-                        this field will be left blank.</p>
+                        this field will be left blank. Here, the client provides a session ID from a previous connection.</p>
                     </section>
                     <section>
                         <h2>Cipher Suites</h2>
-                        <p>This is a list of all cipher suites that the client supports, in order of the client's preference. For a resumed connection, this field is left blank.</p>
+                        <p>This is a list of all cipher suites that the client supports, in order of the client's preference.
+                         For a resumed connection, this field contains the cipher suite used previously. Some possible cipher suites are listed below.</p>
                         <table style="float:left; font-size: 90%;">
                             <thead>
                                 <tr>
@@ -319,7 +328,6 @@
                         <p>This message contains a single byte with value 0x01. The server sends this message after successfully
                         processing the key exchange message it received from the client. This message serves as a notification
                         that all further messages will be sent under the newly negotiated Cipher Spec.</p>
-                        <p><a href="#/6/1">Return to Server Verify Packet Overview</a></p>
                     </section>
                 </section>
 
@@ -385,7 +393,6 @@
                         <p>This message contains a single byte with value 0x01. The client sends this message following
                         handshake key exchange and certificate verify messages (if any). This message serves as a notification
                         that all further messages will be sent under the newly negotiated Cipher Spec.</p>
-                        <p><a href="#/6/1">Return to Server Verify Packet Overview</a></p>
                     </section>
 				</section>
 

@@ -26,22 +26,39 @@
 	</head>
 
 	<body>
+    <a href="{% url 'lessons' %}" draggable="false">
+    <div class="homebutton">
+    <img src="{% static 'LEARNSSL/PageTheme/img/homeicon2.png' %}" alt="" draggable="false">
+    </div>
+    </a>
 
 		<div class="reveal">
 
 			<div class="slides">
 
                 <section>
-                    <h1>SSL 3.0 (Negotiate Key)</h1>
-                    <p>Use your arrow keys or the buttons at the bottom right corner to navigate through the example. Moving right along the example will progress through the packets, while moving down will provide more information about the packet you are currently viewing. Press ESC to see a slide overview.</p>
+                    <h1>SSL 3.0 (negotiate key)</h1>
+                    <p>Use the arrows at the top left corner or the arrow keys on your keyboard to navigate through the
+                    example. The left key will take you back to the overview. The up key will take you back to a packet's detailed view. Press the
+                    home button to return to the lessons page. When you are ready to begin, move to the right.</p>
                 </section>
 
                 <section>
                     <h2>Handshake Overview</h2>
                     <p>In this scenario, the client (represented by the green messages) initiates a connection with a server (represented by the blue messages) for the first time.</p>
-{#                    <img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/overview-text.png' %}" alt="Overview" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;">#}
-                    <p>[image goes here]</p>
-                    <a href="#/2">Client Hello</a>
+                    <img src="{% static 'LEARNSSL/PageTheme/img/overviews/ssl3s2.png' %}" alt="Overview" width="1463" height="599" style="border:0; box-shadow:0 0 0 grey;" usemap="#mapname">
+
+                    <p>Click on a message name to be taken to that message's detailed view.</p>
+                    <map name="mapname">
+                        <area shape="rect" coords="41,144,206,480" href="#/2">
+                        <area shape="rect" coords="214,144,356,480" href="#/3">
+                        <area shape="rect" coords="357,144,499,480" href="#/4">
+                        <area shape="rect" coords="500,144,658,480" href="#/5">
+                        <area shape="rect" coords="681,144,836,480" href="#/6">
+                        <area shape="rect" coords="837,144,976,480" href="#/7">
+                        <area shape="rect" coords="974,144,1096,480" href="#/8">
+                        <area shape="rect" coords="1116,144,1322,480" href="#/9">
+                    </map>
                 </section>
 
 				<section>
@@ -83,7 +100,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p><a href="#/2/2">Scroll down for more info!</a></p>
                     </section>
 
                     <section>
@@ -102,7 +118,7 @@
                     </section>
                     <section>
                         <h2>Cipher Suites</h2>
-                        <p>This is a list of all cipher suites that the client supports, in order of the client's preference. For a resumed connection, this field is left blank.</p>
+                        <p>This is a list of all cipher suites that the client supports, in order of the client's preference.</p>
                         <table style="float:left; font-size: 90%;">
                             <thead>
                                 <tr>
@@ -234,33 +250,57 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/2'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/1'">
                                     <td>{{ json.SERVERHELLO.0.contents }}</td>
                                     <td>{{ json.SERVERHELLO.0.size }}</td>
                                     <td>{{ json.SERVERHELLO.0.datas2 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/3'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/2'">
                                     <td>{{ json.SERVERHELLO.1.contents }}</td>
                                     <td>{{ json.SERVERHELLO.1.size }}</td>
                                     <td>{{ json.SERVERHELLO.1.datas2 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/4'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/3'">
                                     <td>{{ json.SERVERHELLO.2.contents }}</td>
                                     <td>{{ json.SERVERHELLO.2.size }}</td>
                                     <td>{{ json.SERVERHELLO.2.datas2 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/5'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/4'">
                                     <td>{{ json.SERVERHELLO.3.contents }}</td>
                                     <td>{{ json.SERVERHELLO.3.size }}</td>
                                     <td>{{ json.SERVERHELLO.3.datas2 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/6'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/5'">
                                     <td>{{ json.SERVERHELLO.4.contents }}</td>
                                     <td>{{ json.SERVERHELLO.4.size }}</td>
                                     <td>{{ json.SERVERHELLO.4.datas2 }}</td>
                                 </tr>
                             </tbody>
                         </table>
+                    </section>
+                    <section>
+                        <h2>Protocol Version</h2>
+                        <p>This tells the client that the server is using the SSL 3.0 protocol.</p>
+                    </section>
+                    <section>
+                        <h2>Random</h2>
+                        <p>This random structure is sent by the server to the client and must be different from the client's random value.</p>
+                    </section>
+                    <section>
+                        <h2>Session ID</h2>
+                        <p>If the server found a match for the client supplied Session ID and agrees to reopen the connection,
+                         this field will contain the same session ID supplied that was by the client. If the ID is not
+                         found or one was not supplied, this field will instead contain a new session ID for the new connection.</p>
+                    </section>
+                    <section>
+                        <h2>Cipher Suite</h2>
+                        <p>This field contains the server's chosen cipher suite from the client's given list. For a resumed
+                        connection, it would contain the cipher suite previously used in the session.</p>
+                    </section>
+                    <section>
+                        <h2>Compression Method</h2>
+                        <p>This field contains the server's chosen compression method from the client's given list. For a resumed
+                        connection, it would contain the compression method previously used in the session.</p>
                     </section>
 				</section>
 
@@ -276,33 +316,34 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/1'">
+                                    <td>{{ json.SERVERKEYEXCHANGE.0.contents }}</td>
+                                    <td>{{ json.SERVERKEYEXCHANGE.0.size|safe }}</td>
+                                    <td>{{ json.SERVERKEYEXCHANGE.0.datas2|safe }}</td>
+                                </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/4/2'">
-                                    <td>{{ json.SERVERHELLO.0.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.0.size }}</td>
-                                    <td>{{ json.SERVERHELLO.0.datas2 }}</td>
+                                    <td>{{ json.SERVERKEYEXCHANGE.1.contents }}</td>
+                                    <td>{{ json.SERVERKEYEXCHANGE.1.size|safe }}</td>
+                                    <td>{{ json.SERVERKEYEXCHANGE.1.datas2|safe }}</td>
                                 </tr>
                                 <tr style="cursor: pointer;" onclick="window.document.location='#/4/3'">
-                                    <td>{{ json.SERVERHELLO.1.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.1.size }}</td>
-                                    <td>{{ json.SERVERHELLO.1.datas2 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/4'">
-                                    <td>{{ json.SERVERHELLO.2.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.2.size }}</td>
-                                    <td>{{ json.SERVERHELLO.2.datas2 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/5'">
-                                    <td>{{ json.SERVERHELLO.3.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.3.size }}</td>
-                                    <td>{{ json.SERVERHELLO.3.datas2 }}</td>
-                                </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/4/6'">
-                                    <td>{{ json.SERVERHELLO.4.contents }}</td>
-                                    <td>{{ json.SERVERHELLO.4.size }}</td>
-                                    <td>{{ json.SERVERHELLO.4.datas2 }}</td>
+                                    <td>{{ json.SERVERKEYEXCHANGE.2.contents }}</td>
+                                    <td>{{ json.SERVERKEYEXCHANGE.2.size|safe }}</td>
+                                    <td>{{ json.SERVERKEYEXCHANGE.2.datas2|safe }}</td>
                                 </tr>
                             </tbody>
                         </table>
+                    </section>
+                    <h2>RSA Modulus</h2>
+                        <p>The modulus of the server's temporary RSA key.</p>
+                    </section>
+                    <section>
+                        <h2>RSA Exponent</h2>
+                        <p>The public exponent of the server's temporary RSA key.</p>
+                    </section>
+                    <section>
+                        <h2>Signed Params</h2>
+                        <p>A hash of the RSA modulus and exponent and signed using the server's private key.</p>
                     </section>
 				</section>
 
@@ -318,12 +359,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/1'">
                                     <td>{{ json.FINISHED.0.contents }}</td>
                                     <td>{{ json.FINISHED.0.size }}</td>
                                     <td>{{ json.FINISHED.0.datas2 }}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
                                     <td>{{ json.FINISHED.1.contents }}</td>
                                     <td>{{ json.FINISHED.1.size }}</td>
                                     <td>{{ json.FINISHED.1.datas2|safe }}</td>
@@ -331,6 +372,16 @@
                                 </tbody>
                             </table>
                         </section>
+                        <section>
+                        <h2>MD5 Hash</h2>
+                        <p>This is an MD5 hash containing all of the previous handshake messages up to but not including this message. The full formula used is: MD5 Hash = MD5(master_secret + pad2 + MD5(handshake_messages + Sender
+ + master_secret + pad1)). The variables pad1 and pad2 are simply padding - their values do not matter for the implementation of the handshake.</p>
+                    </section>
+                    <section>
+                        <h2>SHA Hash</h2>
+                        <p>This is a SHA-1 hash containing all of the previous handshake messages up to but not including this message. The full formula used is: SHA Hash = SHA(master_secret + pad2 + SHA(handshake_messages + Sender
+ + master_secret + pad1)). The variables pad1 and pad2 are simply padding - their values do not matter for the implementation of the handshake.</p>
+                    </section>
 				</section>
 
                 <section>
@@ -345,26 +396,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/6/2'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/6/1'">
                                     <td>{{ json.CLIENTKEYEXCHANGE.0.contents }}</td>
                                     <td>{{ json.CLIENTKEYEXCHANGE.0.size }}</td>
-                                    <td>{{ json.CLIENTKEYEXCHANGE.0.data }}</td>
+                                    <td>{{ json.CLIENTKEYEXCHANGE.0.datas2 }}</td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <p>*The size of this message is dependent on the key size of the RSA encryption used, but prior to being encrypted, the data is 48 bytes.</p>
                     </section>
-                <section>
-                        <h2>MSG-CLIENT-FINISHED</h2>
-                        <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full
-                            list of the different message types and their corresponding hex values, click here.</p>
+                    <section>
+                        <h2>RSA Encrypted Pre-Master Secret</h2>
+                        <p>If RSA is being used for key agreement and authentication, the client
+                         generates a 48-byte pre-master secret, encrypts it under the public
+                         key from the server's certificate or temporary RSA key from a server
+                         key exchange message, and sends the result in this encrypted pre-master
+                         secret message.</p>
                     </section>
 				</section>
 
                 <section>
-                    <section>
-                        <h2>Change Cipher Spec (client)</h2>
-                        <a href="#/6/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-verify.png' %}" alt="server-verify" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
                     <section>
                         <h2>Change Cipher Spec (client)</h2>
                             <table>
@@ -376,21 +427,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/2'">
-                                    <td>{{ change_ciphper_spec }}</td>
-                                    <td>{{ 1 }}</td>
-                                    <td>{{ 0x01 }}</td>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/1'">
+                                    <td>change_cipher_spec</td>
+                                    <td>1</td>
+                                    <td>0x01</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </section>
+
+                    <section>
+                        <h2>Change Cipher Spec</h2>
+                        <p>This message contains a single byte with value 0x01. The server sends this message after successfully
+                        processing the key exchange message it received from the client. This message serves as a notification
+                        that all further messages will be sent under the newly negotiated Cipher Spec.</p>
+                    </section>
 				</section>
 
                 <section>
-                    <section>
-                        <h2>Client Finish</h2>
-                        <a href="#/7/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-finish.png' %}" alt="server-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
                     <section>
                         <h2>Client Finish</h2>
                             <table>
@@ -402,12 +456,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/8/2'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/8/1'">
                                     <td>{{ json.FINISHED.0.contents }}</td>
                                     <td>{{ json.FINISHED.0.size }}</td>
                                     <td>{{ json.FINISHED.0.datas2 }}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/9/3'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/8/2'">
                                     <td>{{ json.FINISHED.1.contents }}</td>
                                     <td>{{ json.FINISHED.1.size }}</td>
                                     <td>{{ json.FINISHED.1.datas2 }}</td>
@@ -415,13 +469,19 @@
                                 </tbody>
                             </table>
                         </section>
+                        <section>
+                        <h2>MD5 Hash</h2>
+                        <p>This is an MD5 hash containing all of the previous handshake messages up to but not including this message. The full formula used is: MD5 Hash = MD5(master_secret + pad2 + MD5(handshake_messages + Sender
+ + master_secret + pad1)). The variables pad1 and pad2 are simply padding - their values do not matter for the implementation of the handshake.</p>
+                    </section>
+                    <section>
+                        <h2>SHA Hash</h2>
+                        <p>This is a SHA-1 hash containing all of the previous handshake messages up to but not including this message. The full formula used is: SHA Hash = SHA(master_secret + pad2 + SHA(handshake_messages + Sender
+ + master_secret + pad1)). The variables pad1 and pad2 are simply padding - their values do not matter for the implementation of the handshake.</p>
+                    </section>
 				</section>
 
                 <section>
-                    <section>
-                        <h2>Change Cipher Spec (server)</h2>
-                        <a href="#/6/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-verify.png' %}" alt="server-verify" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
                     <section>
                         <h2>Change Cipher Spec (server)</h2>
                             <table>
@@ -433,14 +493,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/10/2'">
-                                    <td>{{ change_ciphper_spec }}</td>
-                                    <td>{{ 1 }}</td>
-                                    <td>{{ 0x01 }}</td>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/9/1'">
+                                    <td>change_cipher_spec</td>
+                                    <td>1</td>
+                                    <td>0x01</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </section>
+
+                    <section>
+                        <h2>Change Cipher Spec</h2>
+                        <p>This message contains a single byte with value 0x01. The server sends this message after successfully
+                        processing the key exchange message it received from the client. This message serves as a notification
+                        that all further messages will be sent under the newly negotiated Cipher Spec.</p>
+                    </section>
 				</section>
 
 			</div>

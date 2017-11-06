@@ -37,14 +37,17 @@
 
                 <section>
                     <h1>SSL 2.0</h1>
-                    <p>Use your arrow keys or the buttons at the bottom right corner to navigate through the example. Moving right along the example will progress through the packets, while moving down will provide more information about the packet you are currently viewing. Press ESC to see a slide overview.</p>
+                    <p>Use the arrows at the top left corner or the arrow keys on your keyboard to navigate through the
+                    example. The left key will take you back to the overview. The up key will take you back to a packet's detailed view. Press the
+                    home button to return to the lessons page. When you are ready to begin, move to the right.</p>
                 </section>
 
                 <section>
                     <h2>Handshake Overview</h2>
                     <p>In this scenario, the client (represented by the green messages) initiates a connection with a server (represented by the blue messages) for the first time.</p>
-                    <img src="{% static 'LEARNSSL/PageTheme/img/new_ssl2.png' %}" alt="Overview" width="1080" height="526" style="border:0; box-shadow:0 0 0 grey;" usemap="#mapname">
+                    <img src="{% static 'LEARNSSL/PageTheme/img/overviews/ssl2s1.png' %}" alt="Overview" width="1080" height="526" style="border:0; box-shadow:0 0 0 grey;" usemap="#mapname">
 
+                    <p>Click on a message name to be taken to that message's detailed view.</p>
                     <map name="mapname">
                         <area shape="rect" coords="32,71,172,464" href="#/2">
                         <area shape="rect" coords="197,71,362,464" href="#/3">
@@ -58,7 +61,6 @@
 				<section>
                     <section>
                         <h2>Client Hello</h2>
-                        <p>To prepare for the handshake, Alice generates some random data– called the ‘challenge’</p>
                         <table>
                             <thead>
                                 <tr>
@@ -110,7 +112,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p><a href="#/2/2">Scroll down for more info!</a></p>
                     </section>
                     <section>
                         <h2>MSG-CLIENT-HELLO</h2>

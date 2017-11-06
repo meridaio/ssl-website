@@ -3205,7 +3205,7 @@
 			verticalSlides = dom.wrapper.querySelectorAll( VERTICAL_SLIDES_SELECTOR );
 
 		var routes = {
-			left: indexh > 0 && indexv == 0 || config.loop,
+			left: indexh > 1 || config.loop,
 			//right: indexh < horizontalSlides.length - 1 && indexv == 0|| config.loop,
 			right: indexh == 0,
 			up: indexv > 0,

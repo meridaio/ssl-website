@@ -26,6 +26,11 @@
 	</head>
 
 	<body>
+	<a href="{% url 'lessons' %}" draggable="false">
+	<div class="homebutton">
+        <img src="{% static 'LEARNSSL/PageTheme/img/homeicon2.png' %}" alt="" draggable="false">
+    </div>
+    </a>
 
 		<div class="reveal">
 
@@ -33,23 +38,31 @@
 
                 <section>
                     <h1>SSL 2.0 Existing Session ID with Verification</h1>
-                    <p>Use your arrow keys or the buttons at the bottom right corner to navigate through the example. Moving right along the example will progress through the packets, while moving down will provide more information about the packet you are currently viewing. Press ESC to see a slide overview.</p>
+                    <p>Use the arrows at the top left corner or the arrow keys on your keyboard to navigate through the
+                    example. The left key will take you back to the overview. The up key will take you back to a packet's detailed view. Press the
+                    home button to return to the lessons page. When you are ready to begin, move to the right.</p>
                 </section>
 
                 <section>
                     <h2>Handshake Overview</h2>
-                    <p>In this scenario, the client (represented by the green messages) initiates a connection with a server (represented by the blue messages) that it has previously connected to using a session Identifier. Then, it authenticates itself to the server.</p>
-                    <img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/overview-text.png' %}" alt="Overview" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;">
+                    <p>In this scenario, the client (represented by the green messages) initiates a connection with a server (represented by the blue messages) that requires client authentication.</p>
+                    <img src="{% static 'LEARNSSL/PageTheme/img/overviews/ssl2s3.png' %}" alt="Overview" width="1350" height="573" style="border:0; box-shadow:0 0 0 grey;" usemap="#mapname">
+
+                    <p>Click on a message name to be taken to that message's detailed view.</p>
+                    <map name="mapname">
+                        <area shape="rect" coords="32,100,200,500" href="#/2">
+                        <area shape="rect" coords="215,100,377,500" href="#/3">
+                        <area shape="rect" coords="396,100,555,500" href="#/4">
+                        <area shape="rect" coords="578,100,701,500" href="#/5">
+                        <area shape="rect" coords="702,100,834,500" href="#/6">
+                        <area shape="rect" coords="871,100,1055,500" href="#/7">
+                        <area shape="rect" coords="1066,100,1231,500" href="#/8">
+                    </map>
                 </section>
 
 				<section>
                     <section>
                         <h2>Client Hello</h2>
-                        <a href="#/2/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-hello.png' %}" alt="Overview" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
-                    <section>
-                        <h2>Client Hello</h2>
-                        <p>To prepare for the handshake, Alice generates some random data– called the ‘challenge’</p>
                         <table>
                             <thead>
                                 <tr>
@@ -59,74 +72,68 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/2'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/1'">
                                     <td>{{ json.CLIENTHELLO.0.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.0.size }}</td>
                                     <td>{{ json.CLIENTHELLO.0.datas1 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/3'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/2'">
                                     <td>{{ json.CLIENTHELLO.1.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.1.size }}</td>
                                     <td>{{ json.CLIENTHELLO.1.datas1 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/4'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/3'">
                                     <td>{{ json.CLIENTHELLO.2.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.2.size }}</td>
                                     <td>{{ json.CLIENTHELLO.2.datas1 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/5'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/4'">
                                     <td>{{ json.CLIENTHELLO.3.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.3.size|safe }}</td>
                                     <td>{{ json.CLIENTHELLO.3.datas2 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/6'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/5'">
                                     <td>{{ json.CLIENTHELLO.4.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.4.size }}</td>
                                     <td>{{ json.CLIENTHELLO.4.datas1 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/7'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/6'">
                                     <td>{{ json.CLIENTHELLO.5.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.5.size|safe }}</td>
                                     <td>{{ json.CLIENTHELLO.5.datas1|safe }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/8'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/7'">
                                     <td>{{ json.CLIENTHELLO.6.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.6.size }}</td>
                                     <td>{{ json.CLIENTHELLO.6.datas2 }}</td>
                                 </tr>
-                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/9'">
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/2/8'">
                                     <td>{{ json.CLIENTHELLO.7.contents }}</td>
                                     <td>{{ json.CLIENTHELLO.7.size }}</td>
                                     <td>{{ json.CLIENTHELLO.7.datas1|safe }}</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p><a href="#/2/2">Scroll down for more info!</a></p>
                     </section>
                     <section>
                         <h2>MSG-CLIENT-HELLO</h2>
                         <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full list of the different message types and their corresponding hex values, click here.</p>
-                        <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CLIENT-VERSION</h2>
                         <p>For SSL 2.0, the client version is always 0x0002. This field is here in the interests of forward compatibility (SSL 3.0 uses the value 0x0300, for example).</p>
-                        <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CIPHER-SPECS-LENGTH</h2>
                         <p>This field specifies the length the <a href="#/2/7">CIPHER-SPECS-DATA</a> field. In our case, the CIPHER-SPECS-DATA field is 9 bytes long, giving us a value of 0x0009.</p>
-                        <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>SESSION-ID-LENGTH</h2>
                         <p>This field specifies the length of the <a href="#/2/8">SESSION-ID-DATA</a> field. In this case, there will be a session ID, so this value will be nonzero. </p>
-                        <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CHALLENGE-LENGTH</h2>
                         <p>This field specifies the length of the <a href="#/2/9">CHALLENGE-DATA</a> field. The value and length are chosen by the Client before sending the CLIENT-HELLO message.</p>
-                        <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CIPHER-SPECS-DATA</h2>
@@ -154,7 +161,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>SESSION-ID-DATA</h2>
@@ -162,22 +168,16 @@
                             previous session-id (a unique identifier specific to a single user's connection) to resume
                             their connection to bypass the cipher choice and key exchange sections of the protocol.
                             In this situation, we assume that there is an existing session ID saved from a previous connection, so there will be some data here. </p>
-                        <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CHALLENGE-DATA</h2>
                         <p>The challenge data is simply random bytes generated by the client and sent to the server.
                             its value is completely arbitrary, and is used for authentication purposes later on
                             in the handshake.</p>
-                        <p><a href="#/2/1">Return to Client Hello Packet Overview</a></p>
                     </section>
 				</section>
 
 				<section>
-                    <section>
-                        <h2>Server Hello</h2>
-                        <a href="#/3/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-hello.png' %}" alt="server-hello" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
 					<section>
                         <h2>Server Hello</h2>
                         <table>
@@ -189,118 +189,104 @@
                                 </tr>
                             </thead>
                             <tbody>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/2'">
-																	<td>{{json.SERVERHELLO.0.contents}}</td>
-																	<td>{{json.SERVERHELLO.0.size}}</td>
-																	<td>{{json.SERVERHELLO.0.datas1}}</td>
-															</tr>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/3'">
-																	<td>{{json.SERVERHELLO.1.contents}}</td>
-																	<td>{{json.SERVERHELLO.1.size}}</td>
-																	<td>{{json.SERVERHELLO.1.datas2}}</td>
-															</tr>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/4'">
-																<td>{{json.SERVERHELLO.2.contents}}</td>
-																<td>{{json.SERVERHELLO.2.size}}</td>
-																<td>{{json.SERVERHELLO.2.datas2}}</td>
-															</tr>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/5'">
-																<td>{{json.SERVERHELLO.3.contents}}</td>
-																<td>{{json.SERVERHELLO.3.size}}</td>
-																<td>{{json.SERVERHELLO.3.datas1}}</td>
-															</tr>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/6'">
-																<td>{{json.SERVERHELLO.4.contents}}</td>
-																<td>{{json.SERVERHELLO.4.size}}</td>
-																<td>{{json.SERVERHELLO.4.datas2}}</td>
-															</tr>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/7'">
-																<td>{{json.SERVERHELLO.5.contents}}</td>
-																<td>{{json.SERVERHELLO.5.size}}</td>
-																<td>{{json.SERVERHELLO.5.datas2}}</td>
-															</tr>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/8'">
-																<td>{{json.SERVERHELLO.6.contents}}</td>
-																<td>{{json.SERVERHELLO.6.size}}</td>
-																<td>{{json.SERVERHELLO.6.datas1}}</td>
-															</tr>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/9'">
-																<td>{{json.SERVERHELLO.7.contents}}</td>
-																<td>{{json.SERVERHELLO.7.size}}</td>
-																<td>{{json.SERVERHELLO.7.datas2}}</td>
-															</tr>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/10'">
-																<td>{{json.SERVERHELLO.8.contents}}</td>
-																<td>{{json.SERVERHELLO.8.size}}</td>
-																<td>{{json.SERVERHELLO.8.datas2}}</td>
-															</tr>
-															<tr style="cursor: pointer;" onclick="window.document.location='#/3/11'">
-																<td>{{json.SERVERHELLO.9.contents}}</td>
-																<td>{{json.SERVERHELLO.9.size}}</td>
-																<td>{{json.SERVERHELLO.9.datas1}}</td>
-															</tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/1'">
+                                    <td>{{json.SERVERHELLO.0.contents}}</td>
+                                    <td>{{json.SERVERHELLO.0.size}}</td>
+                                    <td>{{json.SERVERHELLO.0.datas1}}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/2'">
+                                    <td>{{json.SERVERHELLO.1.contents}}</td>
+                                    <td>{{json.SERVERHELLO.1.size}}</td>
+                                    <td>{{json.SERVERHELLO.1.datas2}}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/3'">
+                                    <td>{{json.SERVERHELLO.2.contents}}</td>
+                                    <td>{{json.SERVERHELLO.2.size}}</td>
+                                    <td>{{json.SERVERHELLO.2.datas2}}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/4'">
+                                    <td>{{json.SERVERHELLO.3.contents}}</td>
+                                    <td>{{json.SERVERHELLO.3.size}}</td>
+                                    <td>{{json.SERVERHELLO.3.datas1}}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/5'">
+                                    <td>{{json.SERVERHELLO.4.contents}}</td>
+                                    <td>{{json.SERVERHELLO.4.size}}</td>
+                                    <td>{{json.SERVERHELLO.4.datas2}}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/6'">
+                                    <td>{{json.SERVERHELLO.5.contents}}</td>
+                                    <td>{{json.SERVERHELLO.5.size}}</td>
+                                    <td>{{json.SERVERHELLO.5.datas2}}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/7'">
+                                    <td>{{json.SERVERHELLO.6.contents}}</td>
+                                    <td>{{json.SERVERHELLO.6.size}}</td>
+                                    <td>{{json.SERVERHELLO.6.datas1}}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/8'">
+                                    <td>{{json.SERVERHELLO.7.contents}}</td>
+                                    <td>{{json.SERVERHELLO.7.size}}</td>
+                                    <td>{{json.SERVERHELLO.7.datas2}}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/9'">
+                                    <td>{{json.SERVERHELLO.8.contents}}</td>
+                                    <td>{{json.SERVERHELLO.8.size}}</td>
+                                    <td>{{json.SERVERHELLO.8.datas2}}</td>
+                                </tr>
+                                <tr style="cursor: pointer;" onclick="window.document.location='#/3/10'">
+                                    <td>{{json.SERVERHELLO.9.contents}}</td>
+                                    <td>{{json.SERVERHELLO.9.size}}</td>
+                                    <td>{{json.SERVERHELLO.9.datas1}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </section>
                     <section>
                         <h2>MSG-SERVER-HELLO</h2>
                         <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full list of the different message types and their corresponding hex values, click here.</p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>SESSION-ID-HIT</h2>
                         <p>The client sent a session ID in the previous handshake message <b>and</b> the server was able to find in its database, so this value will be set to 1 to signify that.</p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CERTIFICATE-TYPE</h2>
                         <p>Since a session identifier was found, the server doesn't need to be re-authenticated. Therefore, this value is zero. </p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>SERVER-VERSION</h2>
                         <p>Similarly to the CLIENT-VERSION data field, the value 0x0002 represents SSL 2.0.</p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CERTIFICATE-LENGTH</h2>
-                        <p> As with the CERTIFICATE-TYPE information, there is no need to send this information if a session ID is found so the value is zero. </a></p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
+                        <p> As with the CERTIFICATE-TYPE information, there is no need to send this information if a session ID is found so the value is zero.</p>
                     </section>
                     <section>
                         <h2>CIPHER-SPECS-LENGTH</h2>
                         <p> Cipher suite information was negotiated in the previous connection between the client and server, and will be contained in the session ID. Therefore, theres no need to resend it so the value is zero. </p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CONNECTION-ID-LENGTH</h2>
                         <p>This field defines the length of the connection ID that the server has assigned to the
                             receiving client, given that the client did not already have one.</p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CERTIFICATE-DATA</h2>
                         <p> Since no certificate is being sent, there's no data here. </p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CIPHER-SPECS-DATA</h2>
                         <p> Cipher specifics were previously negotiated, so theres no information here. </p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CONNECTION-ID-DATA</h2>
                         <p>This field contains the connection ID that the server has assigned to the
                             receiving client, given that the client did not already have one.</p>
-                        <p><a href="#/3/1">Return to Server Hello Packet Overview</a></p>
                     </section>
 				</section>
 <!-- Session ID eliminates the need for a master key to be exchanged. -->
 				<section>
-                    <section>
-                        <h2>Client Finish</h2>
-                        <a href="#/5/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-finish.png' %}" alt="client-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
                     <section>
                         <h2>Client Finish</h2>
                             <table>
@@ -312,16 +298,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-																	<tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
-																		<td>{{json.CLIENTFINISH.0.contents}}</td>
-																		<td>{{json.CLIENTFINISH.0.size}}</td>
-																		<td>{{json.CLIENTFINISH.0.datas1}}</td>
-																	</tr>
-																	<tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
-																		<td>{{json.CLIENTFINISH.1.contents}}</td>
-																		<td>{{json.CLIENTFINISH.1.size}}</td>
-																		<td>{{json.CLIENTFINISH.1.datas1}}</td>
-																	</tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/4/1'">
+                                        <td>{{json.CLIENTFINISH.0.contents}}</td>
+                                        <td>{{json.CLIENTFINISH.0.size}}</td>
+                                        <td>{{json.CLIENTFINISH.0.datas1}}</td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/4/2'">
+                                        <td>{{json.CLIENTFINISH.1.contents}}</td>
+                                        <td>{{json.CLIENTFINISH.1.size}}</td>
+                                        <td>{{json.CLIENTFINISH.1.datas1}}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </section>
@@ -329,20 +315,14 @@
                         <h2>MSG-CLIENT-FINISHED</h2>
                         <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full
                             list of the different message types and their corresponding hex values, click here.</p>
-                        <p><a href="#/5/1">Return to Client Finish Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CONNECTION-ID</h2>
                         <p>This field contains the CONNECTION-ID sent before, now encrypted with the client_write_key.</p>
-                        <p><a href="#/5/1">Return to Client Finish Packet Overview</a></p>
                     </section>
 				</section>
 
                 <section>
-                    <section>
-                        <h2>Server Verify</h2>
-                        <a href="#/6/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-verify.png' %}" alt="server-verify" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
                     <section>
                         <h2>Server Verify</h2>
                             <table>
@@ -354,15 +334,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/6/2'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/1'">
                                         <td>{{json.SERVERVERIFY.0.contents}}</td>
                                         <td>{{json.SERVERVERIFY.0.size}}</td>
                                         <td>{{json.SERVERVERIFY.0.datas1}}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/6/3'">
-																			<td>{{json.SERVERVERIFY.1.contents}}</td>
-																			<td>{{json.SERVERVERIFY.1.size}}</td>
-																			<td>{{json.SERVERVERIFY.1.datas1}}</td>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
+                                        <td>{{json.SERVERVERIFY.1.contents}}</td>
+                                        <td>{{json.SERVERVERIFY.1.size}}</td>
+                                        <td>{{json.SERVERVERIFY.1.datas1}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -371,20 +351,14 @@
                         <h2>MSG-SERVER-VERIFY</h2>
                         <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full
                             list of the different message types and their corresponding hex values, click here.</p>
-                        <p><a href="#/6/1">Return to Server Verify Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CHALLENGE-DATA</h2>
                         <p>This field contains the CONNECTION-ID that was sent by the server previously, now encrypted with the client_write_key</p>
-                        <p><a href="#/6/1">Return to Server Verify Packet Overview</a></p>
                     </section>
 				</section>
 
-        <section>
-                    <section>
-                        <h2>Request Certificate</h2>
-                        <a href="#/5/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-finish.png' %}" alt="client-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
+                <section>
                     <section>
                         <h2>Request Certificate</h2>
                             <table>
@@ -396,17 +370,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/6/1'">
                                         <td>{{ json.REQUESTCERTIFICATE.0.contents }}</td>
                                         <td>{{ json.REQUESTCERTIFICATE.0.size }}</td>
                                         <td>{{ json.REQUESTCERTIFICATE.0.datas3 }}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/6/2'">
                                       <td>{{ json.REQUESTCERTIFICATE.1.contents }}</td>
                                       <td>{{ json.REQUESTCERTIFICATE.1.size }}</td>
                                       <td>{{ json.REQUESTCERTIFICATE.1.datas3 }}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/6/3'">
                                       <td>{{ json.REQUESTCERTIFICATE.2.contents }}</td>
                                       <td>{{ json.REQUESTCERTIFICATE.2.size }}</td>
                                       <td>{{ json.REQUESTCERTIFICATE.2.datas3 }}</td>
@@ -417,26 +391,19 @@
                     <section>
                         <h2>MSG-REQUEST-CERTIFICATE</h2>
                         <p> This byte notifies the client that this message is a verification request. </p>
-                        <p><a href="#/5/1">Return to Request Certificate Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>AUTHENTICATION-TYPE</h2>
                         <p> This field specifies the way in which the client is to authenticate itself to the server. There is only one option available though, and it requires sending an encrypted MD5 message to the server. </p>
-                        <p><a href="#/5/1">Return to Request Certificate Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CERTIFICATE-CHALLENGE-DATA</h2>
                         <p> This data is a random assortment of bits totaling betwen 16 and 32 bytes. It is used by the client to respond to this message. </p>
-                        <p><a href="#/5/1">Return to Request Certificate Packet Overview</a></p>
                     </section>
 				</section>
 
 
-        <section>
-                    <section>
-                        <h2>Client Certificate</h2>
-                        <a href="#/5/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/client-finish.png' %}" alt="client-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
+                <section>
                     <section>
                         <h2>Client Certificate</h2>
                             <table>
@@ -448,32 +415,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/2'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/1'">
                                       <td>{{ json.CLIENTCERTIFICATE.0.contents }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.0.size }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.0.datas3 }}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/2'">
                                       <td>{{ json.CLIENTCERTIFICATE.1.contents }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.1.size }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.1.datas3 }}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/3'">
                                       <td>{{ json.CLIENTCERTIFICATE.2.contents }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.2.size }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.2.datas3 }}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/4'">
                                       <td>{{ json.CLIENTCERTIFICATE.3.contents }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.3.size }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.3.datas3 }}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/5'">
                                       <td>{{ json.CLIENTCERTIFICATE.4.contents }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.4.size }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.4.datas3 }}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/5/3'">
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/6'">
                                       <td>{{ json.CLIENTCERTIFICATE.5.contents }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.5.size }}</td>
                                       <td>{{ json.CLIENTCERTIFICATE.5.datas3 }}</td>
@@ -484,42 +451,32 @@
                     <section>
                         <h2>MSG-CLIENT-CERTIFICATE</h2>
                         <p> This byte notifies the server that this message is a verification response from the client. </p>
-                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CERTIFICATE-TYPE</h2>
                         <p> This field describes what will be in the certificate data. </p>
-                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CERTIFICATE-LENGTH</h2>
                         <p> Specifies the length of the certificate data. </p>
-                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>RESPONSE-LENGTH</h2>
                         <p> Length of the response data field. </p>
-                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>CERTIFICATE-DATA</h2>
                         <p> Contains an X.509 signed certificate. </p>
-                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>RESPONSE-DATA</h2>
                         <p> Based on the AUTHENTICATION-TYPE indicated the server, the client will encrypt certain data, including the CERTIFICATE-CHALLENGE-DATA using its private RSA key. </p>
-                        <p><a href="#/5/1">Return to Client Certificate Packet Overview</a></p>
                     </section>
 				</section>
 
 
 
-        <section>
-                    <section>
-                        <h2>Server Finish</h2>
-                        <a href="#/7/1"><img src="{% static 'LEARNSSL/PageTheme/img/FinalBackgrounds/server-finish.png' %}" alt="server-finish" width="1500" height="1000" style="border:0; box-shadow:0 0 0 grey;"></a>
-                    </section>
+                <section>
                     <section>
                         <h2>Server Finish</h2>
                             <table>
@@ -531,13 +488,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/2'">
-																			<td>{{json.SERVERFINISH.0.contents}}</td>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/8/1'">
+                                        <td>{{json.SERVERFINISH.0.contents}}</td>
 	                                    <td>{{json.SERVERFINISH.0.size}}</td>
 	                                    <td>{{json.SERVERFINISH.0.datas1}}</td>
                                     </tr>
-                                    <tr style="cursor: pointer;" onclick="window.document.location='#/7/3'">
-																			<td>{{json.SERVERFINISH.1.contents}}</td>
+                                    <tr style="cursor: pointer;" onclick="window.document.location='#/8/2'">
+                                        <td>{{json.SERVERFINISH.1.contents}}</td>
 	                                    <td>{{json.SERVERFINISH.1.size}}</td>
 	                                    <td>{{json.SERVERFINISH.1.datas1}}</td>
                                     </tr>
@@ -548,12 +505,10 @@
                         <h2>MSG-SERVER-FINISHED</h2>
                         <p>The first byte in every SSL packet specifies what kind of message is being sent. For a full
                             list of the different message types and their corresponding hex values, click here.</p>
-                        <p><a href="#/7/1">Return to Server Finish Packet Overview</a></p>
                     </section>
                     <section>
                         <h2>SESSION-ID-DATA</h2>
                         <p>The server generates a session ID for the client so that the client can restart the connection quickly later on if needed.</p>
-                        <p><a href="#/7/1">Return to Server Finish Packet Overview</a></p>
                     </section>
 				</section>
 
