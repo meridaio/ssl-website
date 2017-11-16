@@ -7,7 +7,11 @@
 }
 
 tbody tr:hover{
-    background:#343434;
+    background:white;
+}
+
+tbody tr:hover td{
+    color:black;
 }
 
 div.homebutton {
